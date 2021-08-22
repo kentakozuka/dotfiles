@@ -1,0 +1,5 @@
+.DS_Store
+*tags
+cache/
+http-cache/
+logs/
