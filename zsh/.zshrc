@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------#
-# plugin manager
+# Plugin manager
 #------------------------------------------------------------------------------#
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -23,6 +23,10 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
+
+#-----------------------------------------#
+# Plugins
+#-----------------------------------------#
 zinit light mafredri/zsh-async
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
@@ -31,6 +35,7 @@ zinit light dracula/zsh
 
 autoload -Uz compinit
 compinit
+
 #------------------------------------------------------------------------------#
 # modules
 #------------------------------------------------------------------------------#
@@ -103,6 +108,10 @@ eval "$(plenv init -)"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+# Flutter
+if [[ -f ~/.dvm/scripts/dvm ]]; then
+  . ~/.dvm/scripts/dvm
+fi
 
 #------------------------------------------------------------------------------#
 # miscellaneous
