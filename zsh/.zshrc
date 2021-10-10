@@ -109,9 +109,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # Flutter
-if [[ -f ~/.dvm/scripts/dvm ]]; then
-  . ~/.dvm/scripts/dvm
-fi
+export PATH="/Users/s01952/fvm/default/bin:$PATH"
 
 #------------------------------------------------------------------------------#
 # miscellaneous
