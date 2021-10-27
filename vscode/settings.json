@@ -96,17 +96,17 @@
   "go.autocompleteUnimportedPackages": true,
   "[go]": {
     "editor.snippetSuggestions": "none",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
+      "source.organizeImports": false
+    },
   },
   "gopls": {
     // Add parameter placeholders when completing a function.
     "usePlaceholders": true,
     "completeUnimported": true
   },
-  "go.useLanguageServer": true,
+  "go.useLanguageServer": false,
   "go.languageServerFlags": [
     "-rpc.trace"
   ],
@@ -122,7 +122,13 @@
       "source.organizeImports": true
     }
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/python/.venv/bin/python",
+  "python.sortImports.path": "${workspaceRoot}/ui/io/venv/bin/isort",
+  "python.insidersChannel": "weekly",
+  // toml
+  "[toml]": {
+    "editor.formatOnSave": false,
+  },
   // JS
   "javascript.updateImportsOnFileMove.enabled": "always",
   "[javascript]": {
@@ -144,6 +150,19 @@
       "source.fixAll.eslint": true
     }
   },
+  // Flutter
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false,
+  },
   // Java
   "java.semanticHighlighting.enabled": true,
   "[jsonc]": {
@@ -159,13 +178,20 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   "[cpp]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.quickSuggestions": true,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.acceptSuggestionOnEnter": "off"
   },
+  "C_Cpp.codeFolding": "Disabled",
+  "C_Cpp.default.cppStandard": "c++17",
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": false,
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -183,11 +209,11 @@
     }
   ],
   "diffEditor.ignoreTrimWhitespace": false,
-  "terminal.integrated.profiles.osx": "/bin/zsh",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
   "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": -1
+  "dart.previewFlutterUiGuides": true,
+  "window.zoomLevel": -1,
 }

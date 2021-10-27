@@ -1,4 +1,7 @@
-.PHONY: zsh vim vscode tmux karabiner git ssh
+.PHONY: list_extensions zsh vim vscode tmux karabiner git ssh
+
+list_extensions:
+	vscode/list_extensions.sh
 
 zsh:
 	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
