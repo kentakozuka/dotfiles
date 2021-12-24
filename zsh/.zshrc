@@ -181,26 +181,6 @@ zle -N pick-git-branch
 bindkey '^g' pick-git-branch
 
 #-----------------------------------------#
-# nomp: no master push
-#-----------------------------------------#
-function add-no-master-push () {
-    touch ./.git/hooks/pre-push
-    cat <<EOL > ./.git/hooks/pre-push
-#!/bin/bash
-
-while read local_ref local_sha1 remote_ref remote_sha1
-do
-    if [[ "\${remote_ref##refs/heads/}" = "master" ]]; then
-        echo "Do not push to master branch!!!"
-        exit 1
-    fi
-done
-EOL
-    chmod 775 ./.git/hooks/pre-push
-}
-alias nomp="add-no-master-push"
-
-#-----------------------------------------#
 # hs: inc search in command history
 #-----------------------------------------#
 function peco-history-selection() {
@@ -214,6 +194,7 @@ alias hs="peco-history-selection"
 #-----------------------------------------#
 function conv-image() {
     find . -name '*.heic' | xargs -IT basename T .heic | xargs -IT sips --setProperty format jpeg ./T.heic --out ./T.jpg;
+    find . -name '*.HEIC' | xargs -IT basename T .HEIC | xargs -IT sips --setProperty format jpeg ./T.HEIC --out ./T.jpg;
     exiftool -all= -overwrite_original *.jpg
 }
 alias convimg="conv-image"
