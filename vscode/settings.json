@@ -14,7 +14,7 @@
   // ----------------------------------
   // Editor
   // ----------------------------------
-  "editor.tabSize": 8,
+  "editor.tabSize": 2,
   "editor.lineNumbers": "on",
   "editor.cursorStyle": "line",
   "editor.insertSpaces": false,
@@ -81,13 +81,9 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "terminal.integrated.macOptionIsMeta": true,
   "git.autofetch": true,
+  "git.path": "/usr/local/bin/git",
   "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
+    "suppressGitMissingWarning": true
   },
   // Go
   "go.goroot": "~/.gvm/gos/go1.15.7",
@@ -123,7 +119,8 @@
     }
   },
   "python.defaultInterpreterPath": "${workspaceFolder}/python/.venv/bin/python",
-  "python.sortImports.path": "${workspaceRoot}/ui/io/venv/bin/isort",
+  // "python.sortImports.path": "${workspaceRoot}/ui/io/venv/bin/isort",
+  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
   "python.insidersChannel": "weekly",
   // toml
   "[toml]": {
@@ -163,8 +160,12 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false,
   },
+  // Firebase
+  "[firestorerules]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+  },
   // Java
-  "java.semanticHighlighting.enabled": true,
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -205,7 +206,7 @@
       "server": "{{put-server-name-here}}",
       "database": "{{put-database-name-here}}",
       "user": "{{put-username-here}}",
-      "password": "{{put-password-here}}"
+      "password": ""
     }
   ],
   "diffEditor.ignoreTrimWhitespace": false,
@@ -215,5 +216,21 @@
   },
   "explorer.confirmDragAndDrop": false,
   "dart.previewFlutterUiGuides": true,
+  "markdown.extension.toc.updateOnSave": false,
   "window.zoomLevel": -1,
+  "githubPullRequests.queries": [
+    {
+      "label": "Waiting For My Review",
+      "query": "is:open review-requested:${user}"
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}"
+    },
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}"
+    }
+  ],
+  "java.project.importOnFirstTimeStartup": "automatic",
 }
