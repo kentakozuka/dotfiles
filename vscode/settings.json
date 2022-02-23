@@ -118,10 +118,12 @@
       "source.organizeImports": true
     }
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/python/.venv/bin/python",
-  // "python.sortImports.path": "${workspaceRoot}/ui/io/venv/bin/isort",
-  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+  "python.formatting.provider": "black",
+  // "python.formatting.blackPath": "${env:VENV_PATH}/bin/black",
+  // "python.defaultInterpreterPath": "${env:VENV_PATH}/bin/python",
+  // "python.sortImports.path": "${env:VENV_PATH}/bin/isort",
   "python.insidersChannel": "weekly",
+  "python.analysis.typeCheckingMode": "basic",
   // toml
   "[toml]": {
     "editor.formatOnSave": false,
@@ -217,7 +219,6 @@
   "explorer.confirmDragAndDrop": false,
   "dart.previewFlutterUiGuides": true,
   "markdown.extension.toc.updateOnSave": false,
-  "window.zoomLevel": -1,
   "githubPullRequests.queries": [
     {
       "label": "Waiting For My Review",
@@ -233,4 +234,5 @@
     }
   ],
   "java.project.importOnFirstTimeStartup": "automatic",
+  "window.zoomLevel": -1,
 }
