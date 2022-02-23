@@ -2,6 +2,7 @@ Adobe.extendscript-debug
 adpyke.vscode-sql-formatter
 BazelBuild.vscode-bazel
 be5invis.toml
+bierner.markdown-mermaid
 bradlc.vscode-tailwindcss
 ChFlick.firecode
 christian-kohler.path-intellisense
@@ -15,6 +16,7 @@ EditorConfig.EditorConfig
 esbenp.prettier-vscode
 formulahendry.auto-close-tag
 formulahendry.code-runner
+GitHub.copilot
 GitHub.vscode-pull-request-github
 golang.go
 GraphQL.vscode-graphql
@@ -22,6 +24,7 @@ Gruntfuggly.todo-tree
 hashicorp.terraform
 heptio.jsonnet
 humao.rest-client
+idleberg.applescript
 ivan-bocharov.stan-vscode
 jeff-hykin.better-cpp-syntax
 johnpapa.vscode-peacock
@@ -29,7 +32,6 @@ jpoissonnier.vscode-styled-components
 mathiasfrohlich.Kotlin
 mechatroner.rainbow-csv
 mosapride.zenkaku
-ms-azuretools.vscode-docker
 ms-mssql.data-workspace-vscode
 ms-mssql.mssql
 ms-mssql.sql-database-projects-vscode
@@ -52,6 +54,7 @@ mtxr.sqltools
 naumovs.color-highlight
 nrwl.angular-console
 oderwat.indent-rainbow
+PascalReitermann93.vscode-yaml-sort
 PKief.material-icon-theme
 redhat.fabric8-analytics
 redhat.java
@@ -61,6 +64,7 @@ redhat.vscode-yaml
 richie5um2.vscode-sort-json
 RomanPeshkov.vscode-text-tables
 shardulm94.trailing-spaces
+shd101wyy.markdown-preview-enhanced
 silvenon.mdx
 softwaredotcom.swdc-vscode
 streetsidesoftware.code-spell-checker
