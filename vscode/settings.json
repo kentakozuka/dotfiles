@@ -131,6 +131,7 @@
   // JS
   "javascript.updateImportsOnFileMove.enabled": "always",
   "[javascript]": {
+    "editor.tabSize": 4,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
@@ -218,21 +219,9 @@
   },
   "explorer.confirmDragAndDrop": false,
   "dart.previewFlutterUiGuides": true,
+  // Markdown
   "markdown.extension.toc.updateOnSave": false,
-  "githubPullRequests.queries": [
-    {
-      "label": "Waiting For My Review",
-      "query": "is:open review-requested:${user}"
-    },
-    {
-      "label": "Assigned To Me",
-      "query": "is:open assignee:${user}"
-    },
-    {
-      "label": "Created By Me",
-      "query": "is:open author:${user}"
-    }
-  ],
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
   "java.project.importOnFirstTimeStartup": "automatic",
   "window.zoomLevel": -1,
 }
