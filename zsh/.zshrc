@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #------------------------------------------------------------------------------#
 # Plugin manager
 #------------------------------------------------------------------------------#
@@ -17,10 +24,10 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
 
@@ -78,12 +85,12 @@ export YVM_DIR=$HOME/.yvm
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-# go
+# Go
 source $HOME/.gvm/scripts/gvm
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
-# python
+# Python
 if [[ $commands[pyenv] ]]; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
@@ -110,6 +117,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # Flutter
 export PATH="/Users/s01952/fvm/default/bin:$PATH"
+# Java
+[ -s "/Users/s01952/.jabba/jabba.sh" ] && source "/Users/s01952/.jabba/jabba.sh"
 
 #------------------------------------------------------------------------------#
 # miscellaneous
@@ -204,5 +213,3 @@ alias convimg="conv-image"
 # start tmux
 #------------------------------------------------------------------------------#
 [ $TERM_PROGRAM = "vscode" ] && [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
-
-[ -s "/Users/s01952/.jabba/jabba.sh" ] && source "/Users/s01952/.jabba/jabba.sh"
