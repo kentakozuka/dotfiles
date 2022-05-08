@@ -102,7 +102,6 @@
     "usePlaceholders": true,
     "completeUnimported": true
   },
-  "go.useLanguageServer": false,
   "go.languageServerFlags": [
     "-rpc.trace"
   ],
@@ -224,4 +223,8 @@
   "markdown-preview-enhanced.previewTheme": "github-light.css",
   "java.project.importOnFirstTimeStartup": "automatic",
   "window.zoomLevel": -1,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
 }

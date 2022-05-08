@@ -1,7 +1,7 @@
 .PHONY: list_extensions zsh vim vscode tmux karabiner git ssh
 
 list-extensions:
-	vscode/list-extensions.sh
+	${PWD}/vscode/list-extensions.sh
 
 zsh:
 	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
