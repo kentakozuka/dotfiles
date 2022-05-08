@@ -3,3 +3,4 @@
 cache/
 http-cache/
 logs/
+.vscode/
