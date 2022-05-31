@@ -1,24 +1,18 @@
 # Plugin manager
-# https://github.com/zpm-zsh/zpm
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-    git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
-fi
-source ~/.zpm/zpm.zsh
-# Plugins
-zpm load mafredri/zsh-async,source:async.plugin.zsh
-zpm load @github/zsh-users/zsh-autosuggestions,source:zsh-autosuggestions.zsh
+# Download Znap, if it's not there yet.
+[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+
+source ~/Git/zsh-snap/znap.zsh  # Start Znap
+
+# `znap source` automatically downloads and starts your plugins.
+znap source mafredri/zsh-async
+znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
-zpm load @github/zsh-users/zsh-completions,source:zsh-completions.plugin.zsh
-zpm load @github/zsh-users/zsh-syntax-highlighting,source:zsh-syntax-highlighting.zsh
-zpm load @github/dracula/zsh,source:dracula.zsh-theme
-
-autoload -Uz compinit
-compinit
-
-#------------------------------------------------------------------------------#
-# modules
-#------------------------------------------------------------------------------#
-autoload -Uz cdr
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-syntax-highlighting
+znap source dracula/zsh
 
 #------------------------------------------------------------------------------#
 # History
