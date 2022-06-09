@@ -10,7 +10,6 @@ source ~/Git/zsh-snap/znap.zsh  # Start Znap
 znap source mafredri/zsh-async
 znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
-znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-syntax-highlighting
 znap source dracula/zsh
 
@@ -55,10 +54,11 @@ export YVM_DIR=$HOME/.yvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 # Go
-source $HOME/.gvm/scripts/gvm
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$GOBIN:$PATH
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 # Python
 if [[ $commands[pyenv] ]]; then
     eval "$(pyenv init --path)"
@@ -71,10 +71,7 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/emulator:$PATH
 # Ruby
-if [[ -d ~/.rbenv  ]]; then
-    export PATH=${HOME}/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-fi
+eval "$(rbenv init -)"
 # helmenv
 export PATH="$HOME/.helm:$PATH"
 source $HOME/.helm/helmenv.sh
@@ -88,20 +85,27 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export PATH="/Users/s01952/fvm/default/bin:$PATH"
 # Java
 [ -s "/Users/s01952/.jabba/jabba.sh" ] && source "/Users/s01952/.jabba/jabba.sh"
-
+# Bazel
 alias ll='ls -laG'
 alias bazel='bazelisk'
-
 # kubectl
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
 # git
 alias grv='gh repo view --web'
 alias gcm='git checkout master'
 alias gt='cd "$(git rev-parse --show-toplevel)"'
+
+#-----------------------------------------#
+# gctx
+#-----------------------------------------#
+function gcloud-config-select() {
+    local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
+    print -z gcloud config configurations activate ${select}
+}
+alias gctx="gcloud-config-select"
 
 #-----------------------------------------#
 # gc: checkout with inc search
