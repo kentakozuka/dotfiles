@@ -6,9 +6,6 @@ list-extensions:
 zsh:
 	ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
 
-vim:
-	ln -sf ${PWD}/vimrc/.vimrc ${HOME}/.vimrc
-
 vscode:
 	source ${PWD}/vscode/install_extensions.sh
 	ln -sf ${PWD}/vscode/settings.json ${HOME}/Library/Application\ Support/Code/User/settings.json
