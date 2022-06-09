@@ -1,4 +1,3 @@
-// Place your settings in this file to overwrite the default settings
 {
   "files.exclude": {
     "**/.git": false,
@@ -7,223 +6,166 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none",
-  "workbench.editor.enablePreview": false,
-  "explorer.confirmDelete": false,
-  // ----------------------------------
-  // Editor
-  // ----------------------------------
-  "editor.tabSize": 2,
-  "editor.lineNumbers": "on",
-  "editor.cursorStyle": "line",
-  "editor.insertSpaces": false,
-  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.wordWrap": "off",
-  "editor.inlineSuggest.enabled": true,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
+  "workbench": {
+    "iconTheme": "material-icon-theme",
   },
-  "editor.renderWhitespace": "boundary",
-  "editor.cursorBlinking": "solid",
-  "editor.minimap.enabled": false,
-  "editor.suggestSelection": "first",
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "vim.easymotion": true,
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
-    }
-  ],
-  "vim.hlsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.visualstar": true,
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<C-f>"
-      ],
-      "after": [
-        "<Right>"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<leader>",
-        "\\"
-      ],
-      "commands": [
-        ":nohl"
-      ]
+  "window": {
+    "zoomLevel": -1
+  },
+  "explorer": {
+    "confirmDelete": false,
+    "confirmDragAndDrop": false
+  },
+  "editor": {
+    "inlineSuggest.enabled": true,
+    "tabSize": 2,
+    "lineNumbers": "on",
+    "cursorStyle": "line",
+    "insertSpaces": false,
+    "wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "wordWrap": "off",
+    "inlineSuggest": {
+      "enabled": true
     },
-    {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
-    }
-  ],
-  "vim.handleKeys": {
-    "<C-d>": true
+    "formatOnSave": true,
+    "codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "renderWhitespace": "boundary",
+    "cursorBlinking": "solid",
+    "minimap": {
+      "enabled": false
+    },
+    "suggestSelection": "first",
+    "acceptSuggestionOnCommitCharacter": false
   },
-  "prettier.requireConfig": true,
-  "breadcrumbs.enabled": true,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "terminal.integrated.macOptionIsMeta": true,
-  "git.autofetch": true,
-  "git.path": "/usr/local/bin/git",
-  "gitlens.advanced.messages": {
-    "suppressGitMissingWarning": true
+  "vim": {
+    "visualModeKeyBindingsNonRecursive": [
+      {
+        "before": [
+          "<space>"
+        ],
+        "commands": [
+          "vspacecode.space"
+        ]
+      }
+    ],
+    "useSystemClipboard": true,
+    "insertModeKeyBindingsNonRecursive": [
+      {
+        "before": [
+          "<C-f>"
+        ],
+        "after": [
+          "<Right>"
+        ]
+      }
+    ],
+    "normalModeKeyBindingsNonRecursive": [
+      {
+        "before": [
+          "<leader>",
+          "\\"
+        ],
+        "commands": [
+          ":nohl"
+        ]
+      },
+      {
+        "before": [
+          "<space>"
+        ],
+        "commands": [
+          "vspacecode.space"
+        ]
+      }
+    ],
+    "handleKeys": {
+      "<C-d>": true
+    }
+  },
+  "terminal": {
+    "integrated": {
+      "enableMultiLinePasteWarning": false,
+      "macOptionIsMeta": true,
+      "profiles.osx": {
+        "zsh": {
+          "path": "/bin/zsh"
+        }
+      },
+    },
   },
   // Go
-  "go.goroot": "~/.gvm/gos/go1.15.7",
-  "go.toolsManagement.autoUpdate": true,
-  "go.lintTool": "golangci-lint",
-  "go.autocompleteUnimportedPackages": true,
-  "[go]": {
-    "editor.snippetSuggestions": "none",
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": false
-    },
+  "go": {
+    "useLanguageServer": true,
+    "toolsManagement.autoUpdate": true,
+    "lintTool": "golangci-lint",
+    "lintFlags": [
+      "--fast",
+      "--enable-all",
+      "-D wsl"
+    ],
+    "autocompleteUnimportedPackages": true,
+    "languageServerFlags": [
+      "-rpc.trace"
+    ],
+    "formatTool": "comports"
   },
-  "gopls": {
-    // Add parameter placeholders when completing a function.
-    "usePlaceholders": true,
-    "completeUnimported": true
-  },
-  "go.languageServerFlags": [
-    "-rpc.trace"
-  ],
-  "go.formatTool": "goimports",
   // Python
-  "[python]": {
-    "editor.tabSize": 4,
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": false,
-    "editor.formatOnType": false,
-    "editor.insertSpaces": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    }
-  },
-  "python.formatting.provider": "black",
-  // "python.formatting.blackPath": "${env:VENV_PATH}/bin/black",
-  // "python.defaultInterpreterPath": "${env:VENV_PATH}/bin/python",
-  // "python.sortImports.path": "${env:VENV_PATH}/bin/isort",
-  "python.insidersChannel": "weekly",
-  "python.analysis.typeCheckingMode": "basic",
-  // toml
-  "[toml]": {
-    "editor.formatOnSave": false,
+  "python": {
+    "formatting.provider": "black",
+    "insidersChannel": "weekly",
+    "analysis.typeCheckingMode": "basic",
   },
   // JS
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "[javascript]": {
-    "editor.tabSize": 4,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript": {
+    "updateImportsOnFileMove.enabled": "always"
+  },
+  "typescript": {
+    "updateImportsOnFileMove.enabled": "always"
+  },
+  "[javascript][typescript][typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    }
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[typescript]": {
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
-  },
-  // Flutter
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
-    "editor.selectionHighlight": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false,
-  },
-  // Firebase
-  "[firestorerules]": {
-    "editor.formatOnSave": false,
-    "editor.formatOnType": false,
   },
   // Java
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "project.importOnFirstTimeStartup": "automatic"
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.sortJSON": false
-    },
+  // JSON
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
+  // PROTO
   "[proto3]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "[cpp]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "xaver.clang-format",
-    "editor.quickSuggestions": true,
-    "editor.suggestOnTriggerCharacters": true,
-    "editor.acceptSuggestionOnEnter": "off"
+  // C++
+  "C_Cpp": {
+    "codeFolding": "Disabled",
+    "default.cppStandard": "c++17",
+    "updateChannel": "Insiders"
   },
-  "C_Cpp.codeFolding": "Disabled",
-  "C_Cpp.default.cppStandard": "c++17",
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format",
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
-    "editor.formatOnSave": false,
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
-  "C_Cpp.updateChannel": "Insiders",
-  "mssql.connections": [
-    {
-      "server": "{{put-server-name-here}}",
-      "database": "{{put-database-name-here}}",
-      "user": "{{put-username-here}}",
-      "password": ""
-    }
-  ],
-  "diffEditor.ignoreTrimWhitespace": false,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "explorer.confirmDragAndDrop": false,
-  "dart.previewFlutterUiGuides": true,
-  // Markdown
-  "markdown.extension.toc.updateOnSave": false,
+  "markdown": {
+    "extension.toc.updateOnSave": false
+  },
   "markdown-preview-enhanced.previewTheme": "github-light.css",
-  "java.project.importOnFirstTimeStartup": "automatic",
-  "window.zoomLevel": -1,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
