@@ -1,10 +1,8 @@
 {
   "files.exclude": {
     "**/.git": false,
-    "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
   },
   "workbench": {
     "iconTheme": "material-icon-theme",
@@ -33,9 +31,7 @@
     },
     "renderWhitespace": "boundary",
     "cursorBlinking": "solid",
-    "minimap": {
-      "enabled": false
-    },
+    "minimap.enabled": false,
     "suggestSelection": "first",
     "acceptSuggestionOnCommitCharacter": false
   },
@@ -108,8 +104,7 @@
     "autocompleteUnimportedPackages": true,
     "languageServerFlags": [
       "-rpc.trace"
-    ],
-    "formatTool": "comports"
+    ]
   },
   // Python
   "python": {
@@ -139,7 +134,7 @@
   "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
   },
-  // PROTO
+  // Proto
   "[proto3]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
