@@ -4,121 +4,92 @@
     "**/.project": true,
     "**/.settings": true,
   },
-  "workbench": {
-    "iconTheme": "material-icon-theme",
-  },
-  "window": {
-    "zoomLevel": -1
-  },
-  "explorer": {
-    "confirmDelete": false,
-    "confirmDragAndDrop": false
-  },
-  "editor": {
-    "inlineSuggest.enabled": true,
-    "tabSize": 2,
-    "lineNumbers": "on",
-    "cursorStyle": "line",
-    "insertSpaces": false,
-    "wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "wordWrap": "off",
-    "inlineSuggest": {
-      "enabled": true
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": -1,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabSize": 2,
+  "editor.lineNumbers": "on",
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorBlinking": "solid",
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "vspacecode.space"
+      ]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-f>"
+      ],
+      "after": [
+        "<Right>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "\\"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
-    "formatOnSave": true,
-    "codeActionsOnSave": {
-      "source.fixAll": true
-    },
-    "renderWhitespace": "boundary",
-    "cursorBlinking": "solid",
-    "minimap.enabled": false,
-    "suggestSelection": "first",
-    "acceptSuggestionOnCommitCharacter": false
+    {
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "vspacecode.space"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-d>": true
   },
-  "vim": {
-    "visualModeKeyBindingsNonRecursive": [
-      {
-        "before": [
-          "<space>"
-        ],
-        "commands": [
-          "vspacecode.space"
-        ]
-      }
-    ],
-    "useSystemClipboard": true,
-    "insertModeKeyBindingsNonRecursive": [
-      {
-        "before": [
-          "<C-f>"
-        ],
-        "after": [
-          "<Right>"
-        ]
-      }
-    ],
-    "normalModeKeyBindingsNonRecursive": [
-      {
-        "before": [
-          "<leader>",
-          "\\"
-        ],
-        "commands": [
-          ":nohl"
-        ]
-      },
-      {
-        "before": [
-          "<space>"
-        ],
-        "commands": [
-          "vspacecode.space"
-        ]
-      }
-    ],
-    "handleKeys": {
-      "<C-d>": true
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh"
     }
   },
-  "terminal": {
-    "integrated": {
-      "enableMultiLinePasteWarning": false,
-      "macOptionIsMeta": true,
-      "profiles.osx": {
-        "zsh": {
-          "path": "/bin/zsh"
-        }
-      },
-    },
-  },
   // Go
-  "go": {
-    "useLanguageServer": true,
-    "toolsManagement.autoUpdate": true,
-    "lintTool": "golangci-lint",
-    "lintFlags": [
-      "--fast",
-      "--enable-all",
-      "-D wsl"
-    ],
-    "autocompleteUnimportedPackages": true,
-    "languageServerFlags": [
-      "-rpc.trace"
-    ]
-  },
+  "go.useLanguageServer": true,
+  "go.toolsManagement.autoUpdate": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast",
+    "--enable-all",
+    "-D wsl"
+  ],
+  "go.autocompleteUnimportedPackages": true,
+  "go.languageServerFlags": [
+    "-rpc.trace"
+  ],
   // Python
-  "python": {
-    "formatting.provider": "black",
-    "insidersChannel": "weekly",
-    "analysis.typeCheckingMode": "basic",
-  },
+  "python.formatting.provider": "black",
+  "python.analysis.typeCheckingMode": "basic",
   // JS
-  "javascript": {
-    "updateImportsOnFileMove.enabled": "always"
-  },
-  "typescript": {
-    "updateImportsOnFileMove.enabled": "always"
-  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "[javascript][typescript][typescriptreact]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
@@ -128,7 +99,6 @@
   // Java
   "[java]": {
     "editor.defaultFormatter": "redhat.java",
-    "project.importOnFirstTimeStartup": "automatic"
   },
   // JSON
   "[json][jsonc]": {
@@ -139,11 +109,8 @@
     "editor.defaultFormatter": "xaver.clang-format"
   },
   // C++
-  "C_Cpp": {
-    "codeFolding": "Disabled",
-    "default.cppStandard": "c++17",
-    "updateChannel": "Insiders"
-  },
+  "C_Cpp.codeFolding": "Disabled",
+  "C_Cpp.default.cppStandard": "c++17",
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format",
   },
@@ -157,9 +124,7 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "markdown": {
-    "extension.toc.updateOnSave": false
-  },
+  "markdown.extension.toc.updateOnSave": false,
   "markdown-preview-enhanced.previewTheme": "github-light.css",
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
