@@ -20,7 +20,7 @@ function git_branch_name() {
 # Enable substitution in the prompt.
 setopt prompt_subst
 # Config for prompt. PS1 synonym.
-prompt='%F{cyan}%2/ %F{yellow}$(git_branch_name) %F{white}> '
+prompt='%F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
 znap prompt
 
 #------------------------------------------------------------------------------#
