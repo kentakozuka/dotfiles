@@ -66,7 +66,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+[[ $commands[pyenv] ]] && eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 # Python
@@ -81,12 +81,12 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/emulator:$PATH
 # Ruby
-eval "$(rbenv init -)"
+[[ $commands[rbenv] ]] && eval "$(rbenv init -)"
 # helmenv
 export PATH="$HOME/.helm:$PATH"
-source $HOME/.helm/helmenv.sh
+[[ $commands[helmenv] ]] && source $HOME/.helm/helmenv.sh
 # Perl
-eval "$(plenv init -)"
+[[ $commands[plenv] ]] && eval "$(plenv init -)"
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # MySQL
@@ -101,8 +101,8 @@ alias bazel='bazelisk'
 # kubectl
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+[[ $commands[gcloud] ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+[[ $commands[gcloud] ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 # git
 alias grv='gh repo view --web'
 alias gcm='git checkout master'
