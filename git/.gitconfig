@@ -1,17 +1,10 @@
-[credential]
-	helper = osxkeychain
 [user]
 	name = Kenta Kozuka
 	email = kentakozuka@users.noreply.github.com
-[url "github:"]
-    InsteadOf = https://github.com/
-    InsteadOf = git@github.com:
 [color]
 	diff = auto
 	status = auto
 	branch = auto
-[ghq]
-	root = ~/go/src
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
