@@ -11,7 +11,17 @@ znap source mafredri/zsh-async
 znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
 znap source zsh-users/zsh-syntax-highlighting
-znap source dracula/zsh
+
+# Prompt
+function git_branch_name() {
+    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+    if [[ $branch == "" ]]; then : ;else echo '('$branch')' ;fi
+}
+# Enable substitution in the prompt.
+setopt prompt_subst
+# Config for prompt. PS1 synonym.
+prompt='%F{cyan}%2/ %F{yellow}$(git_branch_name) %F{white}> '
+znap prompt
 
 #------------------------------------------------------------------------------#
 # History
@@ -102,7 +112,7 @@ alias gt='cd "$(git rev-parse --show-toplevel)"'
 # gctx
 #-----------------------------------------#
 function gcloud-config-select() {
-    local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
+    local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
     print -z gcloud config configurations activate ${select}
 }
 alias gctx="gcloud-config-select"
