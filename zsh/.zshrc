@@ -83,8 +83,7 @@ export PATH=$ANDROID_HOME/emulator:$PATH
 # Ruby
 [[ $commands[rbenv] ]] && eval "$(rbenv init -)"
 # helmenv
-export PATH="$HOME/.helm:$PATH"
-[[ $commands[helmenv] ]] && source $HOME/.helm/helmenv.sh
+[[ $commands[helmenv] ]] echo 'export PATH="$(brew --prefix)/bin/:$PATH"'
 # Perl
 [[ $commands[plenv] ]] && eval "$(plenv init -)"
 # Krew
