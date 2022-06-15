@@ -83,7 +83,7 @@ export PATH=$ANDROID_HOME/emulator:$PATH
 # Ruby
 [[ $commands[rbenv] ]] && eval "$(rbenv init -)"
 # helmenv
-[[ $commands[helmenv] ]] echo 'export PATH="$(brew --prefix)/bin/:$PATH"'
+[[ $commands[helmenv] ]] && echo 'export PATH="$(brew --prefix)/bin/:$PATH"'
 # Perl
 [[ $commands[plenv] ]] && eval "$(plenv init -)"
 # Krew
@@ -91,17 +91,19 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # Flutter
-export PATH="/Users/s01952/fvm/default/bin:$PATH"
+export PATH="$HOME/fvm/default/bin:$PATH"
 # Java
-[ -s "/Users/s01952/.jabba/jabba.sh" ] && source "/Users/s01952/.jabba/jabba.sh"
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+# Rust
+[[ -s $HOME/.rsvm/rsvm.sh ]] && . $HOME/.rsvm/rsvm.sh # This loads RSVM
 # Bazel
 alias ll='ls -laG'
 alias bazel='bazelisk'
 # kubectl
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
-[[ $commands[gcloud] ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-[[ $commands[gcloud] ]] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 # git
 alias grv='gh repo view --web'
 alias gcm='git checkout master'
