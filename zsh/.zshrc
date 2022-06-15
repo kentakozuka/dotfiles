@@ -22,6 +22,7 @@ function git_branch_name() {
 setopt prompt_subst
 # Config for prompt. PS1 synonym.
 prompt='%F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
+# Makes prompt visible before the following commands are executed.
 znap prompt
 
 #------------------------------------------------------------------------------#
@@ -57,10 +58,8 @@ export EDITOR="vim"
 #------------------------------------------------------------------------------#
 # Command specific settings
 #------------------------------------------------------------------------------#
-PATH=$HOME/.local/bin:/usr/local/bin:$HOME/bin:$PATH
 # yvm
-export YVM_DIR=$HOME/.yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+[ -r $HOME/.yvm/yvm.sh ] && . $HOME/.yvm/yvm.sh
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -84,7 +83,7 @@ export PATH=$ANDROID_HOME/emulator:$PATH
 # Ruby
 [[ $commands[rbenv] ]] && eval "$(rbenv init -)"
 # helmenv
-[[ $commands[helmenv] ]] && echo 'export PATH="$(brew --prefix)/bin/:$PATH"'
+[[ $commands[helmenv] ]] && eval $(export PATH="$(brew --prefix)/bin/:$PATH")
 # Perl
 [[ $commands[plenv] ]] && eval "$(plenv init -)"
 # Krew
@@ -97,18 +96,19 @@ export PATH="$HOME/fvm/default/bin:$PATH"
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 # Rust
 [[ -s $HOME/.rsvm/rsvm.sh ]] && . $HOME/.rsvm/rsvm.sh # This loads RSVM
-# Bazel
-alias ll='ls -laG'
-alias bazel='bazelisk'
 # kubectl
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-# git
+if [[ $commands[gcloud] ]]; then
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
+# Alias
 alias grv='gh repo view --web'
 alias gcm='git checkout master'
 alias gt='cd "$(git rev-parse --show-toplevel)"'
+alias ll='ls -laG'
+alias bazel='bazelisk'
 
 #------------------------------------------------------------------------------#
 # start tmux
