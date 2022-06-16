@@ -66,7 +66,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-[[ $commands[pyenv] ]] && eval "$(goenv init -)"
+[[ $commands[goenv] ]] && eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 # Python
@@ -113,4 +113,4 @@ alias bazel='bazelisk'
 #------------------------------------------------------------------------------#
 # start tmux
 #------------------------------------------------------------------------------#
-[[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
+[ $TERM_PROGRAM = "vscode" ] && [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
