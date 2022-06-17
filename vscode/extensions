@@ -2,8 +2,10 @@ Adobe.extendscript-debug
 adpyke.vscode-sql-formatter
 BazelBuild.vscode-bazel
 be5invis.toml
+bierner.emojisense
 bierner.markdown-mermaid
 bradlc.vscode-tailwindcss
+castwide.solargraph
 ChFlick.firecode
 christian-kohler.path-intellisense
 cschlosser.doxdocgen
@@ -21,7 +23,6 @@ GitHub.remotehub
 GitHub.vscode-pull-request-github
 golang.go
 GraphQL.vscode-graphql
-Gruntfuggly.todo-tree
 hashicorp.terraform
 heptio.jsonnet
 humao.rest-client
@@ -30,11 +31,14 @@ ivan-bocharov.stan-vscode
 jeff-hykin.better-cpp-syntax
 jinliming2.vscode-go-template
 johnpapa.vscode-peacock
+josetr.cmake-language-support-vscode
 jpoissonnier.vscode-styled-components
 mathiasfrohlich.Kotlin
 mechatroner.rainbow-csv
 mohsen1.prettify-json
 mosapride.zenkaku
+ms-azuretools.vscode-docker
+ms-dotnettools.vscode-dotnet-runtime
 ms-mssql.data-workspace-vscode
 ms-mssql.mssql
 ms-mssql.sql-database-projects-vscode
@@ -61,6 +65,7 @@ nrwl.angular-console
 oderwat.indent-rainbow
 PascalReitermann93.vscode-yaml-sort
 PKief.material-icon-theme
+rebornix.ruby
 redhat.fabric8-analytics
 redhat.java
 redhat.vscode-commons
@@ -74,6 +79,7 @@ silvenon.mdx
 softwaredotcom.swdc-vscode
 streetsidesoftware.code-spell-checker
 twxs.cmake
+vadimcn.vscode-lldb
 VisualStudioExptTeam.vscodeintellicode
 vscjava.vscode-java-debug
 vscjava.vscode-java-dependency
@@ -81,6 +87,8 @@ vscjava.vscode-java-pack
 vscjava.vscode-java-test
 vscjava.vscode-maven
 vscodevim.vim
+wingrunr21.vscode-ruby
+wix.vscode-import-cost
 xaver.clang-format
 xrc-inc.jsonnet-formatter
 yzhang.markdown-all-in-one
