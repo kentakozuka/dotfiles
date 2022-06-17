@@ -12,7 +12,7 @@ vscode:
 
 tmux:
 	ln -sf ${PWD}/tmux/.tmux.conf ${HOME}/.tmux.conf
-	ln -sf ${$GOPATH}/src/github.com/jonmosco/kube-tmux ${HOME}/.tmux/
+	ln -sf ${PWD}/tmux/status.tmux ${HOME}/.tmux/status.tmux
 
 karabiner:
 	ln -sf ${PWD}/config/karabiner/karabiner.json ${HOME}/.config/karabiner/karabiner.json
