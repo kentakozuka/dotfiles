@@ -1,12 +1,12 @@
-name: macOS
+name: Linux
 on:
   push:
     branches: [ master ]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install
+      - name: Install.
         run: source install.sh
