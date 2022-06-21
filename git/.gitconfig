@@ -16,3 +16,5 @@
 	includeStatusHeader = false
 	includePullRequestsSection = false
 	includeIssuesSection = false
+[safe]
+	directory = *

@@ -9,10 +9,9 @@ else
     echo "I'm NOT in a remote container"
 fi
 
-touch ~/hello
 # ln -sf ${PWD}/tmux/.tmux.conf ${HOME}/.tmux.conf
 # ln -sf ${PWD}/tmux/status.sh ${HOME}/.tmux/status.sh
-# ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
+ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
 # ln -sf ${PWD}/ssh/config ${HOME}/.ssh/config
 ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
 
