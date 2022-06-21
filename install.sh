@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # if [ $SHELL != "/bin/zsh" ]; then
 #     echo "use zsh as the default shell"
 #     exit 1
