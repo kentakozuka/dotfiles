@@ -18,6 +18,7 @@ EditorConfig.EditorConfig
 esbenp.prettier-vscode
 formulahendry.auto-close-tag
 formulahendry.code-runner
+GitHub.codespaces
 GitHub.copilot
 GitHub.remotehub
 GitHub.vscode-pull-request-github
@@ -51,6 +52,7 @@ ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.remote-wsl
+ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.cmake-tools
 ms-vscode.cpptools
 ms-vscode.cpptools-extension-pack
@@ -73,6 +75,7 @@ redhat.vscode-xml
 redhat.vscode-yaml
 richie5um2.vscode-sort-json
 RomanPeshkov.vscode-text-tables
+rust-lang.rust-analyzer
 shardulm94.trailing-spaces
 shd101wyy.markdown-preview-enhanced
 silvenon.mdx
