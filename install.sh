@@ -14,7 +14,7 @@ touch ~/hello
 # ln -sf ${PWD}/tmux/status.sh ${HOME}/.tmux/status.sh
 # ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
 # ln -sf ${PWD}/ssh/config ${HOME}/.ssh/config
-# ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
+ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
 
 echo "I'm on $(uname)"
 if [ "$(uname)" = "Darwin" ] ; then
