@@ -8,6 +8,7 @@
   "window.zoomLevel": -1,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  // Editor
   "editor.tabSize": 2,
   "editor.lineNumbers": "on",
   "editor.cursorStyle": "line",
@@ -71,6 +72,8 @@
       "path": "/bin/zsh"
     }
   },
+  // Remote container
+  "dotfiles.repository": "git@github.com:kentakozuka/dotfiles.git",
   // Go
   "go.useLanguageServer": true,
   "go.toolsManagement.autoUpdate": true,
@@ -84,6 +87,9 @@
   "go.languageServerFlags": [
     "-rpc.trace"
   ],
+  // Rust
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.checkOnSave.extraArgs": ["--", "-A", "clippy::needless_return"],
   // Python
   "python.formatting.provider": "black",
   "python.analysis.typeCheckingMode": "basic",
@@ -103,6 +109,7 @@
   // JSON
   "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": false,
   },
   // Proto
   "[proto3]": {

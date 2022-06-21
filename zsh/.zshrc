@@ -1,3 +1,9 @@
+if [ -n "${REMOTE_CONTAINERS+1}" ]; then
+    echo "I'm in a remote container"
+else
+    echo "I'm NOT in a remote container"
+fi
+
 # Plugin manager
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
@@ -23,7 +29,7 @@ setopt prompt_subst
 # Config for prompt. PS1 synonym.
 prompt='%F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
 # Makes prompt visible before the following commands are executed.
-znap prompt
+# znap prompt
 
 #------------------------------------------------------------------------------#
 # Zsh settings
@@ -95,7 +101,8 @@ export PATH="$HOME/fvm/default/bin:$PATH"
 # Java
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 # Rust
-[[ -s $HOME/.rsvm/rsvm.sh ]] && . $HOME/.rsvm/rsvm.sh # This loads RSVM
+[[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 # kubectl
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
