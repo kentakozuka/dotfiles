@@ -1,14 +1,14 @@
+#!/bin/bash
 
-if [ $SHELL != "/bin/zsh" ]; then
-    echo "use zsh as the default shell"
-    exit 1
-fi
+# if [ $SHELL != "/bin/zsh" ]; then
+#     echo "use zsh as the default shell"
+#     exit 1
+# fi
 
 if [ "$REMOTE_CONTAINERS" = true ]; then
     echo "I'm in a remote container"
-    chsh -s /bin/zsh
+    cd ${HOME}/dotfiles/install.sh
 else
-    cp -n .gitconfig $HOME/.gitconfig
     echo "I'm NOT in a remote container"
 fi
 
