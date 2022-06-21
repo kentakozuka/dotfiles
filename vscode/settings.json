@@ -67,13 +67,13 @@
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.macOptionIsMeta": true,
-  "terminal.integrated.profiles.osx": {
-    "zsh": {
-      "path": "/bin/zsh"
-    }
-  },
+  "terminal.integrated.shell.linux": "/usr/bin/zsh",
+  "terminal.integrated.shell.osx": "/bin/zsh",
   // Remote container
-  "dotfiles.repository": "git@github.com:kentakozuka/dotfiles.git",
+  // "dotfiles.repository": "git@github.com:kentakozuka/dotfiles.git",
+  "dotfiles.repository": "https://github.com/kentakozuka/dotfiles.git",
+  "dotfiles.targetPath": "~/dotfiles",
+  "dotfiles.installCommand": "~/dotfiles/install.sh",
   // Go
   "go.useLanguageServer": true,
   "go.toolsManagement.autoUpdate": true,
