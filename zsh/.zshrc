@@ -18,18 +18,8 @@ znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
 znap source zsh-users/zsh-syntax-highlighting
 znap source kentakozuka/dotfiles zsh/utils
+znap source kentakozuka/dotfiles zsh/theme
 
-# Prompt
-function git_branch_name() {
-    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-    if [[ $branch == "" ]]; then : ;else echo '('$branch')' ;fi
-}
-# Enable substitution in the prompt.
-setopt prompt_subst
-# Config for prompt. PS1 synonym.
-prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
-# Makes prompt visible before the following commands are executed.
-# znap prompt
 
 #------------------------------------------------------------------------------#
 # Zsh settings
