@@ -13,4 +13,6 @@ if [ "$(uname)" = "Darwin" ] ; then
 	mkdir -p ${HOME}/.config/karabiner && ln -sf ${PWD}/karabiner/karabiner.json ${HOME}/.config/karabiner/karabiner.json
     ln -sf ${PWD}/tmux/.tmux.conf ${HOME}/.tmux.conf
     mkdir -p ${HOME}/.tmux && ln -sf ${PWD}/tmux/status.sh ${HOME}/.tmux/status.sh
+    ln -sf ${PWD}/vscode/settings.json ${HOME}/Library/Application\ Support/Code/User/settings.json
+    (cd vscode && source install-extensions.sh)
 fi
