@@ -20,7 +20,6 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source kentakozuka/dotfiles zsh/utils
 znap source kentakozuka/dotfiles zsh/theme
 
-
 #------------------------------------------------------------------------------#
 # Zsh settings
 #------------------------------------------------------------------------------#
