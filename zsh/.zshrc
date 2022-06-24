@@ -124,5 +124,5 @@ if [ -n "${REMOTE_CONTAINERS+1}" ]; then
     echo "I'm in a remote container"
 else
     echo "I'm NOT in a remote container"
-    [ $TERM_PROGRAM = "vscode" ] && [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
+    [ $TERM_PROGRAM = "vscode" ] && [[ $commands[tmux] ]] && [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
 fi
