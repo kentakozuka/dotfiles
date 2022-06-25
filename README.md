@@ -6,11 +6,6 @@
 
 For vim, use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
-## Keyboard
-
-<img width="780" alt="settings-keyboard" src="https://user-images.githubusercontent.com/16733673/174914056-fb76621a-51e6-44a4-bdc3-0b3d0d024d95.png">
-
-
 # Mission Control
 
 ![settings-mission-control](https://user-images.githubusercontent.com/16733673/174914077-2f6bff04-da07-4c3b-8605-d62a5c1b91f7.png)
