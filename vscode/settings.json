@@ -67,10 +67,27 @@
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.macOptionIsMeta": true,
-  "terminal.integrated.profiles.linux": "/usr/bin/zsh",
-  "terminal.integrated.profiles.osx": "/bin/zsh",
+  "terminal.integrated.profiles.linux": {
+    "zsh": {
+      "path": "zsh"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "zsh"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+  },
+  "terminal.integrated.defaultProfile.osx": "zsh",
   // Remote container
-  // "dotfiles.repository": "git@github.com:kentakozuka/dotfiles.git",
   "dotfiles.repository": "https://github.com/kentakozuka/dotfiles.git",
   "dotfiles.targetPath": "~/dotfiles",
   "dotfiles.installCommand": "~/dotfiles/install.sh",
