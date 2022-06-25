@@ -24,10 +24,12 @@ For vim, use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
 ![settings-date-and-time](https://user-images.githubusercontent.com/16733673/174914142-66a11765-3076-4116-a8c1-4aca41f0e716.png)
 
-# Google Japanese Input
+# Keyboard Input
 
-![google-input](https://user-images.githubusercontent.com/16733673/174914163-19b84d40-0df5-405d-b2b6-8f253a08992b.png)
 
+<img width="780" alt="Screen Shot 2022-06-25 at 15 52 21" src="https://user-images.githubusercontent.com/16733673/175762236-fb2565d5-0935-419f-8568-9217a2618f0f.png">
+
+<img width="780" alt="Screen Shot 2022-06-25 at 15 54 28" src="https://user-images.githubusercontent.com/16733673/175762310-bd15d4f2-cda9-44e7-b1cf-30864fea125a.png">
 
 # Spectacle
 
