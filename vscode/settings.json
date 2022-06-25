@@ -67,8 +67,8 @@
   },
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.macOptionIsMeta": true,
-  "terminal.integrated.shell.linux": "/usr/bin/zsh",
-  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.profiles.linux": "/usr/bin/zsh",
+  "terminal.integrated.profiles.osx": "/bin/zsh",
   // Remote container
   // "dotfiles.repository": "git@github.com:kentakozuka/dotfiles.git",
   "dotfiles.repository": "https://github.com/kentakozuka/dotfiles.git",
