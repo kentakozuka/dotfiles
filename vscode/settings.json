@@ -80,7 +80,7 @@
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.profiles.osx": {
     "zsh": {
-      "path": "zsh"
+      "path": "/bin/zsh"
     },
     "tmux": {
       "path": "tmux",
