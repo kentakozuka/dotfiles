@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
 ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc
 mkdir -p ${HOME}/.ssh &&ln -sf ${PWD}/ssh/config ${HOME}/.ssh/config
