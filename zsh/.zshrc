@@ -1,9 +1,3 @@
-if [ -n "${REMOTE_CONTAINERS+1}" ]; then
-    echo "I'm in a remote container"
-else
-    echo "I'm NOT in a remote container"
-fi
-
 # Plugin manager
 # Download Znap, if it's not there yet.
 [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
