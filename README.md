@@ -28,8 +28,6 @@ For vim, use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
 # Spectacle
 
-1 つのモニターで 2 とか 4 分割するときに便利なショートカット
-
 ![spectacle](https://user-images.githubusercontent.com/16733673/174914170-a3159a58-3059-4613-aaec-f881288c695b.png)
 
 # Alfred4
