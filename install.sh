@@ -1,8 +1,4 @@
-if [ "$REMOTE_CONTAINERS" = true ]; then
-    echo "I'm in a remote container"
-else
-    echo "I'm NOT in a remote container"
-fi
+#!/usr/bin/env bash
 
 ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
 ln -sf ${PWD}/zsh/.zshrc ${HOME}/.zshrc

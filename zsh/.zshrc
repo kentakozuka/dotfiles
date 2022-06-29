@@ -103,9 +103,4 @@ alias bazel='bazelisk'
 #------------------------------------------------------------------------------#
 # start tmux
 #------------------------------------------------------------------------------#
-if [ -n "${REMOTE_CONTAINERS+1}" ]; then
-    echo "I'm in a remote container"
-else
-    echo "I'm NOT in a remote container"
-fi
 [ $TERM_PROGRAM = "vscode" ] && [[ $commands[tmux] ]] && [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
