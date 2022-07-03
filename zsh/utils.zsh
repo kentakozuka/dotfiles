@@ -38,7 +38,7 @@ bindkey '^g' pick-git-branch
 # hs: inc search in command history
 #-----------------------------------------#
 function peco-history-selection() {
-    print -z `history -n 1 | tail -r | peco --layout bottom-up --prompt "[hs]"`
+    print -z `history -n 1 | tac | peco --layout bottom-up --prompt "[hs]"`
     CURSOR=$#BUFFER
 }
 alias hs="peco-history-selection"
