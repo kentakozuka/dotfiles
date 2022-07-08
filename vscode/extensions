@@ -30,10 +30,8 @@ humao.rest-client
 idleberg.applescript
 ivan-bocharov.stan-vscode
 jeff-hykin.better-cpp-syntax
-jinliming2.vscode-go-template
 johnpapa.vscode-peacock
 josetr.cmake-language-support-vscode
-jpoissonnier.vscode-styled-components
 marchrock.vscode-ghq
 mathiasfrohlich.Kotlin
 mechatroner.rainbow-csv
@@ -59,6 +57,7 @@ ms-vscode.cmake-tools
 ms-vscode.cpptools
 ms-vscode.cpptools-extension-pack
 ms-vscode.cpptools-themes
+ms-vscode.hexeditor
 ms-vscode.makefile-tools
 ms-vscode.remote-repositories
 ms-vsliveshare.vsliveshare
@@ -81,7 +80,6 @@ rust-lang.rust-analyzer
 shardulm94.trailing-spaces
 shd101wyy.markdown-preview-enhanced
 silvenon.mdx
-softwaredotcom.swdc-vscode
 streetsidesoftware.code-spell-checker
 twxs.cmake
 vadimcn.vscode-lldb
