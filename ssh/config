@@ -1,8 +1,11 @@
+# Select the right settings.
+Host github.com
+  Hostname ssh.github.com
+  User git
+  Port 443
+  IdentityFile ~/.ssh/id_rsa
 Host github.com
   IdentityAgent ~/.1password/agent.sock
-  # SSH over HTTPS
   User git
   Hostname ssh.github.com
   Port 443
-Host *
-  IdentityAgent ~/.1password/agent.sock
