@@ -26,9 +26,6 @@ For vim, use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
 <img width="780" alt="Screen Shot 2022-06-25 at 15 54 28" src="https://user-images.githubusercontent.com/16733673/175762310-bd15d4f2-cda9-44e7-b1cf-30864fea125a.png">
 
-# Spectacle
-
-![spectacle](https://user-images.githubusercontent.com/16733673/174914170-a3159a58-3059-4613-aaec-f881288c695b.png)
 
 # Alfred4
 
