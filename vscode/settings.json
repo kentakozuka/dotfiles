@@ -104,6 +104,7 @@
   "go.languageServerFlags": [
     "-rpc.trace"
   ],
+  "go.goroot": "~/.goenv/versions/1.19.8",
   // Rust
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.checkOnSave.extraArgs": ["--", "-A", "clippy::needless_return"],
@@ -158,7 +159,6 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "redhat.telemetry.enabled": false,
-  "window.zoomLevel": -1,
   "hexeditor.columnWidth": 16,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",
@@ -201,4 +201,13 @@
       "value": "#42b883"
     }
   ],
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
 }

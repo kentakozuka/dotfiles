@@ -48,6 +48,8 @@ export EDITOR="vim"
 #------------------------------------------------------------------------------#
 # Command specific settings
 #------------------------------------------------------------------------------#
+# Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
 # yvm
 [ -r $HOME/.yvm/yvm.sh ] && . $HOME/.yvm/yvm.sh
 # nvm
