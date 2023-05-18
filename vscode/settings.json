@@ -104,7 +104,7 @@
   "go.languageServerFlags": [
     "-rpc.trace"
   ],
-  "go.goroot": "~/.goenv/versions/1.19.8",
+  "go.goroot": "~/.asdf/installs/golang/1.19/go",
   // Rust
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.checkOnSave.extraArgs": ["--", "-A", "clippy::needless_return"],
@@ -209,5 +209,5 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false
-  },
+  }
 }
