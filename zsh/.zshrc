@@ -50,42 +50,24 @@ export EDITOR="vim"
 #------------------------------------------------------------------------------#
 # Homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
-# yvm
-[ -r $HOME/.yvm/yvm.sh ] && . $HOME/.yvm/yvm.sh
-# nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# asdf
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 # Go
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-[[ $commands[goenv] ]] && eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-# Python
-if [[ $commands[pyenv] ]]; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-fi
+source ~/.asdf/plugins/golang/set-env.zsh
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
 # Android dev
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/emulator:$PATH
-# Ruby
-[[ $commands[rbenv] ]] && eval "$(rbenv init -)"
-# helmenv
-[[ $commands[helmenv] ]] && eval $(export PATH="$(brew --prefix)/bin/:$PATH")
-# Perl
-[[ $commands[plenv] ]] && eval "$(plenv init -)"
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # MySQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # Flutter
 export PATH="$HOME/fvm/default/bin:$PATH"
-# Java
-[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 # Rust
 [[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
@@ -93,8 +75,8 @@ export CARGO_NET_GIT_FETCH_WITH_CLI=true
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 # gcloud
 if [[ $commands[gcloud] ]]; then
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+    source ~/.asdf/installs/gcloud/431.0.0/completion.zsh.inc
+    source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
 fi
 # Alias
 alias grv='gh repo view --web'
