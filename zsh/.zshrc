@@ -42,8 +42,8 @@ eval $(/opt/homebrew/bin/brew shellenv)
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
 # Go
 source ~/.asdf/plugins/golang/set-env.zsh
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$GOPATH/bin
+# export GOPATH=$(go env GOPATH)
+# export PATH=$PATH:$GOPATH/bin
 # Android dev
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/tools:$PATH
@@ -127,11 +127,6 @@ function conv-image() {
     exiftool -all= -overwrite_original *.jpg
 }
 alias convimg="conv-image"
-
-#------------------------------------------------------------------------------#
-# start tmux
-#------------------------------------------------------------------------------#
-# [ $TERM_PROGRAM = "vscode" ] && [[ $commands[tmux] ]] && [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
