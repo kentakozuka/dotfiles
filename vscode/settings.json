@@ -209,5 +209,13 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false
-  }
+  },
+  "grammarly.files.include": [
+    "**/*.md",
+    "**/*.txt"
+  ],
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "editor.accessibilitySupport": "on"
 }
