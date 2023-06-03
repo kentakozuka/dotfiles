@@ -2,5 +2,7 @@
 
 set -e
 
-(cd vscode && source list-extensions.sh)
-(cd brew && brew bundle dump --force)
+echo "I'm on $(uname)"
+if [ "$(uname)" = "Darwin" ] ; then
+	(cd brew && brew bundle dump --force)
+fi
