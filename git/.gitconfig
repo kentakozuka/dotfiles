@@ -1,6 +1,7 @@
 [user]
 	name = Kenta Kozuka
-	email = kentakozuka@users.noreply.github.com
+	email = kenta.kozuka@gmail.com
+	signingkey = /Users/s01952/.ssh/id_ed25519
 [color]
 	diff = auto
 	status = auto
@@ -18,3 +19,9 @@
 	includeIssuesSection = false
 [safe]
 	directory = *
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true

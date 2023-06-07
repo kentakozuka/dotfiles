@@ -1,15 +1,6 @@
-# Select the right settings.
+Include /Users/s01952/.colima/ssh_config
 Host github.com
   Hostname ssh.github.com
   User git
   Port 443
-  IdentityFile ~/.ssh/id_rsa
-Host github.com
-  IdentityAgent ~/.1password/agent.sock
-  User git
-  Hostname ssh.github.com
-  Port 443
-
-# Fig ssh integration. Keep at the bottom of this file.
-Match all
-  Include ~/.fig/ssh
+  IdentityFile ~/.ssh/id_ed25519
