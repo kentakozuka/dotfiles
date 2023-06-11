@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# Fig pre block. Keep at the top of this file.
 
 #------------------------------------------------------------------------------#
 # Zsh settings
@@ -44,8 +43,6 @@ eval $(/opt/homebrew/bin/brew shellenv)
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
 # Go
 source ~/.asdf/plugins/golang/set-env.zsh
-# export GOPATH=$(go env GOPATH)
-# export PATH=$PATH:$GOPATH/bin
 # Android dev
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/tools:$PATH
@@ -70,7 +67,6 @@ if [[ $commands[gcloud] ]]; then
 fi
 # Alias
 alias grv='gh repo view --web'
-alias gcm='git checkout master'
 alias gt='cd "$(git rev-parse --show-toplevel)"'
 alias ll='ls -laG'
 alias kb='kubectl'
@@ -78,17 +74,17 @@ alias kb='kubectl'
 #-----------------------------------------#
 # gctx
 #-----------------------------------------#
-function gcloud-config-select() {
+function gcloud-config-switch() {
     local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
     print -z gcloud config configurations activate ${select}
 }
-alias gctx="gcloud-config-select"
+alias gctx="gcloud-config-switch"
 
 #-----------------------------------------#
 # gc: checkout with inc search
 #-----------------------------------------#
-function peco-git-checkout () {
-    local branch=$(git branch -a | peco | tr -d ' ')
+function git-checkout-select () {
+    local branch=$(git branch -a | fzf | tr -d ' ')
     if [[ "$branch" =~ "remotes/" ]]; then
         local b=$(echo $branch | awk -F'/' '{for(i=3;i<NF;i++){printf("%s%s",$i,OFS="/")}print $NF}')
         print -z git checkout -b ${b} ${branch}
@@ -97,13 +93,13 @@ function peco-git-checkout () {
     fi
     CURSOR=$#BUFFER
 }
-alias gc="peco-git-checkout"
+alias gc="git-checkout-select"
 
 #-----------------------------------------#
 # ^g: pick branch with inc search
 #-----------------------------------------#
 function pick-git-branch {
-    local picked=$(git branch | peco | tr -d ' ')
+    local picked=$(git branch | fzf | tr -d ' ')
     BUFFER="${BUFFER}${picked}"
     CURSOR=$#BUFFER
     zle redisplay
@@ -114,11 +110,11 @@ bindkey '^g' pick-git-branch
 #-----------------------------------------#
 # hs: inc search in command history
 #-----------------------------------------#
-function peco-history-selection() {
-    print -z `history -n 1 | tac | peco --layout bottom-up --prompt "[hs]"`
+function history-selection() {
+    print -z `history -n 1 | tac | fzf`
     CURSOR=$#BUFFER
 }
-alias hs="peco-history-selection"
+alias hs="history-selection"
 
 #-----------------------------------------#
 # conv-image: convert heic to jpg and remove exif
