@@ -34,97 +34,14 @@ bindkey -e
 # vim as a default editor
 export EDITOR="vim"
 
-#------------------------------------------------------------------------------#
-# Command specific settings
-#------------------------------------------------------------------------------#
-# Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
-# asdf
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
-# Go
-source ~/.asdf/plugins/golang/set-env.zsh
-# Android dev
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/tools/bin:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/emulator:$PATH
-# Krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-# MySQL
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-# Flutter
-export PATH="$HOME/fvm/default/bin:$PATH"
-# Rust
-[[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
-export CARGO_NET_GIT_FETCH_WITH_CLI=true
-# kubectl
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
-# gcloud
-if [[ $commands[gcloud] ]]; then
-    source ~/.asdf/installs/gcloud/431.0.0/completion.zsh.inc
-    source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
-fi
-# Alias
-alias grv='gh repo view --web'
-alias gt='cd "$(git rev-parse --show-toplevel)"'
-alias ll='ls -laG'
-alias kb='kubectl'
-
-#-----------------------------------------#
-# gctx
-#-----------------------------------------#
-function gcloud-config-switch() {
-    local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
-    print -z gcloud config configurations activate ${select}
-}
-alias gctx="gcloud-config-switch"
-
-#-----------------------------------------#
-# gc: checkout with inc search
-#-----------------------------------------#
-function git-checkout-select () {
-    local branch=$(git branch -a | fzf | tr -d ' ')
-    if [[ "$branch" =~ "remotes/" ]]; then
-        local b=$(echo $branch | awk -F'/' '{for(i=3;i<NF;i++){printf("%s%s",$i,OFS="/")}print $NF}')
-        print -z git checkout -b ${b} ${branch}
-    else
-        print -z git checkout ${branch}
-    fi
-    CURSOR=$#BUFFER
-}
-alias gc="git-checkout-select"
-
-#-----------------------------------------#
-# ^g: pick branch with inc search
-#-----------------------------------------#
-function pick-git-branch {
-    local picked=$(git branch | fzf | tr -d ' ')
-    BUFFER="${BUFFER}${picked}"
-    CURSOR=$#BUFFER
-    zle redisplay
-}
-zle -N pick-git-branch
-bindkey '^g' pick-git-branch
-
 #-----------------------------------------#
 # hs: inc search in command history
 #-----------------------------------------#
 function history-selection() {
-    print -z `history -n 1 | tac | fzf`
+    print -z `history -n 1 | tac | peco`
     CURSOR=$#BUFFER
 }
 alias hs="history-selection"
-
-#-----------------------------------------#
-# conv-image: convert heic to jpg and remove exif
-#-----------------------------------------#
-function conv-image() {
-    find . -name '*.heic' | xargs -IT basename T .heic | xargs -IT sips --setProperty format jpeg ./T.heic --out ./T.jpg;
-    find . -name '*.HEIC' | xargs -IT basename T .HEIC | xargs -IT sips --setProperty format jpeg ./T.HEIC --out ./T.jpg;
-    exiftool -all= -overwrite_original *.jpg
-}
-alias convimg="conv-image"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
