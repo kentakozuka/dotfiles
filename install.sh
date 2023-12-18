@@ -5,7 +5,7 @@ set -e
 # Install asdf
 if ! command -v asdf &> /dev/null
 then
-		git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 fi
 
 ln -sf ${PWD}/git/.gitconfig ${HOME}/.gitconfig
