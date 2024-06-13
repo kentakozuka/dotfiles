@@ -3,7 +3,7 @@
 
 # Plugins
 # Q: How to install plugins?
-# A: git submodule add https://github.com/zsh-users/zsh-syntax-highlighting "zsh/plugins/zsh-syntax-highlighting"    
+# A: git submodule add https://github.com/zsh-users/zsh-syntax-highlighting "zsh/plugins/zsh-syntax-highlighting"
 export DOTFILES=$HOME/ghq/github.com/kentakozuka/dotfiles
 source $DOTFILES/zsh/plugins/purification/prompt_purification_setup
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
