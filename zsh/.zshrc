@@ -5,11 +5,20 @@
 # Q: How to install plugins?
 # A: git submodule add https://github.com/zsh-users/zsh-syntax-highlighting "zsh/plugins/zsh-syntax-highlighting"
 export DOTFILES=$HOME/ghq/github.com/kentakozuka/dotfiles
-source $DOTFILES/zsh/plugins/purification/prompt_purification_setup
 source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Prompt
+function git_branch_name() {
+    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+    if [[ $branch == "" ]]; then : ;else echo '('$branch')' ;fi
+}
+# Enable substitution in the prompt.
+setopt prompt_subst
+# Config for prompt. PS1 synonym.
+prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
 
+# Custom functions
 function gctx() {
 	local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
 	print -z gcloud config configurations activate ${select}

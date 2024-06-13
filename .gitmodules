@@ -5,7 +5,3 @@
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
 	branch = master
-[submodule "zsh/prompt"]
-	path = zsh/prompt
-	url = https://github.com/Phantas0s/purification
-	branch = master
