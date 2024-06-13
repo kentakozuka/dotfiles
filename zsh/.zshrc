@@ -1,26 +1,14 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-### zsh-history-substring-search
-if [ -d "${HOME}/.local/share/fig/plugins/zsh-history-substring-search" ]; then
-	source "${HOME}/.local/share/fig/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
-fi
-### zsh-autosuggestions
-if [ -d "${HOME}/.local/share/fig/plugins/zsh-autosuggestions" ]; then
-	source "${HOME}/.local/share/fig/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
-### zsh-syntax-highlighting
-if [ -d "${HOME}/.local/share/fig/plugins/zsh-syntax-highlighting" ]; then
-	source "${HOME}/.local/share/fig/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-### ohmyzsh
-if [ -d "${HOME}/.local/share/fig/plugins/ohmyzsh" ]; then
-	export ZSH="${HOME}/.local/share/fig/plugins/ohmyzsh"
-	source "${HOME}/.local/share/fig/plugins/ohmyzsh/oh-my-zsh.sh"
-fi
-### materialshell_carloscuesta
-if [ -d "${HOME}/.local/share/fig/plugins/materialshell_carloscuesta" ]; then
-	source "${HOME}/.local/share/fig/plugins/materialshell_carloscuesta/materialshell.zsh"
-fi
+
+# Plugins
+# Q: How to install plugins?
+# A: git submodule add https://github.com/zsh-users/zsh-syntax-highlighting "zsh/plugins/zsh-syntax-highlighting"    
+export DOTFILES=$HOME/ghq/github.com/kentakozuka/dotfiles
+source $DOTFILES/zsh/plugins/purification/prompt_purification_setup
+source $DOTFILES/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh
+source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 function gctx() {
 	local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
@@ -72,21 +60,18 @@ source /opt/homebrew/opt/asdf/libexec/asdf.sh
 eval $(/opt/homebrew/bin/brew shellenv)
 
 source $(brew --prefix asdf)/libexec/asdf.sh
+alias -- gc='git commit -s -m'
+alias -- gch='git checkout'
 alias -- grv='gh repo view --web'
-alias -- gc='git commit -s'
+alias -- gt='cd "$(git rev-parse --show-toplevel)"'
+alias -- ll='ls -laG'
 export GOPATH=$(go env GOPATH)
 export GOROOT=$(go env GOROOT)
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
-alias -- gt='cd "$(git rev-parse --show-toplevel)"'
-alias -- ll='ls -laG'
-alias -- kb='kubectl'
-alias -- gch='git checkout'
 autoload -Uz compinit
 compinit
 
-
-[[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
