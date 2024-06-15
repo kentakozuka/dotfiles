@@ -55,6 +55,9 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
+# completion
+autoload -Uz compinit
+compinit
 # emacs mode
 bindkey -e
 # vim as a default editor
@@ -70,16 +73,15 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 source $(brew --prefix asdf)/libexec/asdf.sh
 alias -- gc='git commit -s -m'
-alias -- gch='git checkout'
-alias -- grv='gh repo view --web'
+alias -- gco='git checkout'
+alias -- ghpr='gh pr view --web'
+alias -- ghrp='gh repo view --web'
 alias -- gt='cd "$(git rev-parse --show-toplevel)"'
 alias -- ll='ls -laG'
 export GOPATH=$(go env GOPATH)
 export GOROOT=$(go env GOROOT)
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
-autoload -Uz compinit
-compinit
 
 
 # Amazon Q post block. Keep at the bottom of this file.
