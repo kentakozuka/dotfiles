@@ -1,5 +1,5 @@
 # Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 
 [[ -f "$HOME/.oh-my-zsh" ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -12,7 +12,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 # Custom functions
 function gctx() {
@@ -60,12 +60,13 @@ bindkey -e
 export EDITOR="vim"
 
 [[ -f "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+. "$HOME/.asdf/asdf.sh"
 
 if [ "$(uname)" = "Darwin" ] ; then
-	source ~/.asdf/plugins/golang/set-env.zsh
-	source /opt/homebrew/opt/asdf/libexec/asdf.sh
+	. ~/.asdf/plugins/golang/set-env.zsh
+	. /opt/homebrew/opt/asdf/libexec/asdf.sh
 	eval $(/opt/homebrew/bin/brew shellenv)
-	source $(brew --prefix asdf)/libexec/asdf.sh
+	. $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
 alias -- gc='git commit -s -m'
@@ -80,4 +81,4 @@ export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
 # Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
