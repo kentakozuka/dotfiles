@@ -59,6 +59,8 @@ bindkey -e
 # vim as a default editor
 export EDITOR="vim"
 
+[[ -f "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+
 if [ "$(uname)" = "Darwin" ] ; then
 	source ~/.asdf/plugins/golang/set-env.zsh
 	source /opt/homebrew/opt/asdf/libexec/asdf.sh
