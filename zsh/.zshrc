@@ -58,18 +58,14 @@ bindkey "^n" history-beginning-search-forward-end
 bindkey -e
 # vim as a default editor
 export EDITOR="vim"
-# if [[ $commands[gcloud] ]]; then
-# 	source ~/.asdf/installs/gcloud/431.0.0/completion.zsh.inc
-# 	source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
-# fi
-# [ $commands[kubectl] ] && source <(kubectl completion zsh)
+
 if [ "$(uname)" = "Darwin" ] ; then
 	source ~/.asdf/plugins/golang/set-env.zsh
 	source /opt/homebrew/opt/asdf/libexec/asdf.sh
 	eval $(/opt/homebrew/bin/brew shellenv)
+	source $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
-source $(brew --prefix asdf)/libexec/asdf.sh
 alias -- gc='git commit -s -m'
 alias -- gco='git checkout'
 alias -- ghpr='gh pr view --web'
