@@ -63,9 +63,11 @@ export EDITOR="vim"
 # 	source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
 # fi
 # [ $commands[kubectl] ] && source <(kubectl completion zsh)
-source ~/.asdf/plugins/golang/set-env.zsh
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
-eval $(/opt/homebrew/bin/brew shellenv)
+if [ "$(uname)" = "Darwin" ] ; then
+	source ~/.asdf/plugins/golang/set-env.zsh
+	source /opt/homebrew/opt/asdf/libexec/asdf.sh
+	eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 source $(brew --prefix asdf)/libexec/asdf.sh
 alias -- gc='git commit -s -m'

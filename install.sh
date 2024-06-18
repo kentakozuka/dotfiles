@@ -20,5 +20,5 @@ if [ "$(uname)" = "Darwin" ] ; then
 else
 	ln -sf ${HOME}/dotfiles/git/.gitconfig ${HOME}/.gitconfig
 	ln -sf ${HOME}/dotfiles/zsh/.zshrc ${HOME}/.zshrc
-	mkdir -p ${HOME}/.ssh &&ln -sf ${HOME}/dotfiles/ssh/config ${HOME}/.ssh/config
+	# mkdir -p ${HOME}/.ssh &&ln -sf ${HOME}/dotfiles/ssh/config ${HOME}/.ssh/config
 fi
