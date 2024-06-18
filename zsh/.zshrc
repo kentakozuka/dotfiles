@@ -1,22 +1,18 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
-# Plugins
-# Q: How to install plugins?
-# A: git submodule add https://github.com/zsh-users/zsh-syntax-highlighting "zsh/plugins/zsh-syntax-highlighting"
-export DOTFILES=$HOME/ghq/github.com/kentakozuka/dotfiles
-source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Prompt
-function git_branch_name() {
-    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-    if [[ $branch == "" ]]; then : ;else echo '('$branch')' ;fi
-}
-# Enable substitution in the prompt.
-setopt prompt_subst
-# Config for prompt. PS1 synonym.
-prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
+[[ -f "$HOME/.oh-my-zsh" ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export ZSH="$HOME/.oh-my-zsh"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+ZSH_THEME="robbyrussell"
+plugins=(
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+)
+source $ZSH/oh-my-zsh.sh
 
 # Custom functions
 function gctx() {
@@ -56,17 +52,17 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 # completion
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 # emacs mode
 bindkey -e
 # vim as a default editor
 export EDITOR="vim"
-if [[ $commands[gcloud] ]]; then
-	source ~/.asdf/installs/gcloud/431.0.0/completion.zsh.inc
-	source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
-fi
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
+# if [[ $commands[gcloud] ]]; then
+# 	source ~/.asdf/installs/gcloud/431.0.0/completion.zsh.inc
+# 	source ~/.asdf/installs/gcloud/431.0.0/path.zsh.inc
+# fi
+# [ $commands[kubectl] ] && source <(kubectl completion zsh)
 source ~/.asdf/plugins/golang/set-env.zsh
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -82,7 +78,6 @@ export GOPATH=$(go env GOPATH)
 export GOROOT=$(go env GOROOT)
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
-
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
