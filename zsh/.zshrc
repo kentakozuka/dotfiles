@@ -1,18 +1,22 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
+# Plugins
+export PLUGINS=$HOME/dotfiles/zsh/plugins
+[[ ! -d "$PLUGINS/zsh-autosuggestions" ]] &&  git clone https://github.com/zsh-users/zsh-autosuggestions $PLUGINS/zsh-autosuggestions
+. $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+[[ ! -d "$PLUGINS/zsh-syntax-highlighting" ]] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting $PLUGINS/zsh-syntax-highlighting
+. $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-[[ -f "$HOME/.oh-my-zsh" ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-export ZSH="$HOME/.oh-my-zsh"
-[[ -f "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-[[ -f "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-ZSH_THEME="robbyrussell"
-plugins=(
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
-. $ZSH/oh-my-zsh.sh
+# Prompt
+function git_branch_name() {
+    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+    if [[ $branch == "" ]]; then : ;else echo '('$branch')' ;fi
+}
+# Enable substitution in the prompt.
+setopt prompt_subst
+# Config for prompt. PS1 synonym.
+prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F{white} 👉 '
 
 # Custom functions
 function gctx() {
@@ -59,7 +63,7 @@ bindkey -e
 # vim as a default editor
 export EDITOR="vim"
 
-[[ -f "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+[[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 . "$HOME/.asdf/asdf.sh"
 
 if [ "$(uname)" = "Darwin" ] ; then
