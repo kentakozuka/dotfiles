@@ -67,10 +67,7 @@ export EDITOR="vim"
 . "$HOME/.asdf/asdf.sh"
 
 if [ "$(uname)" = "Darwin" ] ; then
-	. ~/.asdf/plugins/golang/set-env.zsh
-	. /opt/homebrew/opt/asdf/libexec/asdf.sh
-	eval $(/opt/homebrew/bin/brew shellenv)
-	. $(brew --prefix asdf)/libexec/asdf.sh
+	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 fi
 
 alias -- gc='git commit -s -m'
@@ -79,8 +76,7 @@ alias -- ghpr='gh pr view --web'
 alias -- ghrp='gh repo view --web'
 alias -- gt='cd "$(git rev-parse --show-toplevel)"'
 alias -- ll='ls -laG'
-export GOPATH=$(go env GOPATH)
-export GOROOT=$(go env GOROOT)
+. ~/.asdf/plugins/golang/set-env.zsh
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
