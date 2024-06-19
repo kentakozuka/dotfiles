@@ -2,11 +2,16 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 # Plugins
-export PLUGINS=$HOME/dotfiles/zsh/plugins
+PLUGINS=$HOME/dotfiles/zsh/plugins
 [[ ! -d "$PLUGINS/zsh-autosuggestions" ]] &&  git clone https://github.com/zsh-users/zsh-autosuggestions $PLUGINS/zsh-autosuggestions
 . $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [[ ! -d "$PLUGINS/zsh-syntax-highlighting" ]] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting $PLUGINS/zsh-syntax-highlighting
 . $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Only Linux installs zsh-autocomplete instead of Amazon Q.
+if [ "$(uname)" = "Linux" ] ; then
+	[[ ! -d "$PLUGINS/zsh-autocomplete" ]] &&  git clone https://github.com/marlonrichert/zsh-autocomplete $PLUGINS/zsh-autocomplete
+	. $PLUGINS/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
 
 # Prompt
 function git_branch_name() {
@@ -63,24 +68,24 @@ bindkey -e
 # vim as a default editor
 export EDITOR="vim"
 
-[[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-. "$HOME/.asdf/asdf.sh"
-[[ ! -d "$HOME/.asdf/plugins/peco" ]] && asdf plugin-add peco && asdf install peco latest && asdf global peco latest
-
-if [ "$(uname)" = "Darwin" ] ; then
-	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 alias -- gc='git commit -s -m'
 alias -- gco='git checkout'
 alias -- ghpr='gh pr view --web'
 alias -- ghrp='gh repo view --web'
 alias -- gt='cd "$(git rev-parse --show-toplevel)"'
 alias -- ll='ls -laG'
+
+[[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+. "$HOME/.asdf/asdf.sh"
+[[ ! -d "$HOME/.asdf/plugins/peco" ]] && asdf plugin-add peco && asdf install peco latest && asdf global peco latest
 [[ -d "$HOME/.asdf/plugins/golang" ]] && . ~/.asdf/plugins/golang/set-env.zsh
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
+
+if [ "$(uname)" = "Darwin" ] ; then
+	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
