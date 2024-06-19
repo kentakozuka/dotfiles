@@ -65,6 +65,7 @@ export EDITOR="vim"
 
 [[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 . "$HOME/.asdf/asdf.sh"
+type peco && asdf plugin-add peco && asdf install peco latest && asdf global peco
 
 if [ "$(uname)" = "Darwin" ] ; then
 	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
