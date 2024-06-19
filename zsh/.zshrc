@@ -78,7 +78,7 @@ alias -- ghpr='gh pr view --web'
 alias -- ghrp='gh repo view --web'
 alias -- gt='cd "$(git rev-parse --show-toplevel)"'
 alias -- ll='ls -laG'
-. ~/.asdf/plugins/golang/set-env.zsh
+[[ -d "$HOME/.asdf" ]] && . ~/.asdf/plugins/golang/set-env.zsh
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
