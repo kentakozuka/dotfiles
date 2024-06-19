@@ -68,6 +68,7 @@ export EDITOR="vim"
 
 if [ "$(uname)" = "Darwin" ] ; then
 	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 alias -- gc='git commit -s -m'
