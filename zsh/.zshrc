@@ -7,12 +7,6 @@ PLUGINS=$HOME/dotfiles/zsh/plugins
 . $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 [[ ! -d "$PLUGINS/zsh-syntax-highlighting" ]] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting $PLUGINS/zsh-syntax-highlighting
 . $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Only Linux installs zsh-autocomplete instead of Amazon Q.
-if [ "$(uname)" = "Linux" ] ; then
-	[[ ! -d "$PLUGINS/zsh-autocomplete" ]] &&  git clone https://github.com/marlonrichert/zsh-autocomplete $PLUGINS/zsh-autocomplete
-	. $PLUGINS/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-	skip_global_compinit=1
-fi
 
 # Prompt
 function git_branch_name() {
