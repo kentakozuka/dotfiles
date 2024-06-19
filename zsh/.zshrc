@@ -65,7 +65,7 @@ export EDITOR="vim"
 
 [[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 . "$HOME/.asdf/asdf.sh"
-type peco && asdf plugin-add peco && asdf install peco latest && asdf global peco
+[[ -d "$HOME/.asdf/plugins/peco" ]] && asdf plugin-add peco && asdf install peco latest && asdf global peco latest
 
 if [ "$(uname)" = "Darwin" ] ; then
 	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -78,7 +78,7 @@ alias -- ghpr='gh pr view --web'
 alias -- ghrp='gh repo view --web'
 alias -- gt='cd "$(git rev-parse --show-toplevel)"'
 alias -- ll='ls -laG'
-[[ -d "$HOME/.asdf" ]] && . ~/.asdf/plugins/golang/set-env.zsh
+[[ -d "$HOME/.asdf/plugins/golang" ]] && . ~/.asdf/plugins/golang/set-env.zsh
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
