@@ -11,6 +11,7 @@ PLUGINS=$HOME/dotfiles/zsh/plugins
 if [ "$(uname)" = "Linux" ] ; then
 	[[ ! -d "$PLUGINS/zsh-autocomplete" ]] &&  git clone https://github.com/marlonrichert/zsh-autocomplete $PLUGINS/zsh-autocomplete
 	. $PLUGINS/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+	skip_global_compinit=1
 fi
 
 # Prompt
@@ -60,9 +61,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
-# completion
-# autoload -Uz compinit
-# compinit
 # emacs mode
 bindkey -e
 # vim as a default editor
