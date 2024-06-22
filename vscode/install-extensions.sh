@@ -5,8 +5,8 @@ then
     echo "code could not be found"
     exit
 fi
-
-extension_file="$(pwd)/extensions"
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+extension_file="${SCRIPTPATH}/extensions"
 
 cat $extension_file | while read line
 do

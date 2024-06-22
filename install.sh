@@ -2,19 +2,19 @@
 
 set -e
 
-DOTFILES=${HOME}/dotfiles
+SCRIPTPATH="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
+
 if [ "${CODESPACES}" = "true" ] ; then
 	echo "I'm on Codespaces"
-	DOTFILES=/workspaces/.codespaces/.persistedshare/dotfiles
 fi
 
-ln -sf ${DOTFILES}/git/.gitconfig ${HOME}/.gitconfig
-ln -sf ${DOTFILES}/zsh/.zshrc ${HOME}/.zshrc
-mkdir -p ${HOME}/.ssh && ln -sf ${DOTFILES}/ssh/config ${HOME}/.ssh/config
-(cd vscode && source install-extensions.sh)
+ln -sf ${SCRIPTPATH}/git/.gitconfig ${HOME}/.gitconfig
+ln -sf ${SCRIPTPATH}/zsh/.zshrc ${HOME}/.zshrc
+mkdir -p ${HOME}/.ssh && ln -sf ${SCRIPTPATH}/ssh/config ${HOME}/.ssh/config
+source ${SCRIPTPATH}/vscode/install-extensions.sh
 
 echo "I'm on $(uname)"
 if [ "$(uname)" = "Darwin" ] ; then
-	mkdir -p ${HOME}/.config/karabiner && ln -sf ${DOTFILES}/karabiner/karabiner.json ${HOME}/.config/karabiner/karabiner.json
-	mkdir -p ${HOME}/Library/KeyBindings && ln -sf ${DOTFILES}/keybinding/DefaultKeybinding.dict ${HOME}/Library/KeyBindings/
+	mkdir -p ${HOME}/.config/karabiner && ln -sf ${SCRIPTPATH}/karabiner/karabiner.json ${HOME}/.config/karabiner/karabiner.json
+	mkdir -p ${HOME}/Library/KeyBindings && ln -sf ${SCRIPTPATH}/keybinding/DefaultKeybinding.dict ${HOME}/Library/KeyBindings/
 fi
