@@ -80,7 +80,5 @@ if [ "$(uname)" = "Darwin" ] ; then
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-export DOTFILES="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
-
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
