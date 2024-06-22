@@ -7,6 +7,7 @@ then
 fi
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+echo ${SCRIPTPATH}
 extension_file="${SCRIPTPATH}/extensions"
 
 code --list-extensions > $extension_file
