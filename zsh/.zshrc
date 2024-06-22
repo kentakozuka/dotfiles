@@ -70,6 +70,7 @@ alias -- ll='ls -laG'
 [[ ! -d "$HOME/.asdf" ]] && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 . "$HOME/.asdf/asdf.sh"
 [[ ! -d "$HOME/.asdf/plugins/peco" ]] && asdf plugin-add peco && asdf install peco latest && asdf global peco latest
+[[ ! -d "$HOME/.asdf/plugins/ghq" ]] && asdf plugin-add ghq && asdf install ghq latest && asdf global ghq latest
 [[ -d "$HOME/.asdf/plugins/golang" ]] && . ~/.asdf/plugins/golang/set-env.zsh
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
