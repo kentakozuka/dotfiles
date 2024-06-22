@@ -3,7 +3,8 @@
 set -e
 
 DOTFILES=${HOME}/dotfiles
-if [ "$(CODESPACES)" = "true" ] ; then
+if [ "${CODESPACES}" = "true" ] ; then
+	echo "I'm on Codespaces"
 	DOTFILES=/workspaces/.codespaces/.persistedshare/dotfiles
 fi
 
