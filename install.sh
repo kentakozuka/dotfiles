@@ -11,6 +11,7 @@ fi
 ln -sf ${DOTFILES}/git/.gitconfig ${HOME}/.gitconfig
 ln -sf ${DOTFILES}/zsh/.zshrc ${HOME}/.zshrc
 mkdir -p ${HOME}/.ssh && ln -sf ${DOTFILES}/ssh/config ${HOME}/.ssh/config
+(cd vscode && source install-extensions.sh)
 
 echo "I'm on $(uname)"
 if [ "$(uname)" = "Darwin" ] ; then
