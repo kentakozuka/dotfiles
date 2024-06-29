@@ -76,6 +76,13 @@ export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
 if [ "$(uname)" = "Darwin" ] ; then
+	# https://github.com/VSCodeVim/Vim#mac-setup
+	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+	defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+	defaults write com.vscodium ApplePressAndHoldEnabled -bool false
+	defaults write com.microsoft.VSCodeExploration ApplePressAndHoldEnabled -bool false
+	defaults delete -g ApplePressAndHoldEnabled
+	# 1Password SSH Agent
 	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
