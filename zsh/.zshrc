@@ -85,6 +85,11 @@ alias -- ll='ls -laG'
 export PATH=$PATH:$GOPATH/bin
 PATH="$PATH:"''
 
+[[ ! -d "$HOME/.asdf/plugins/gcloud" ]] && asdf plugin-add gcloud && asdf install gcloud latest && asdf global gcloud latest
+curr=$(asdf current gcloud | awk '{print $2}')
+source $HOME/.asdf/installs/gcloud/${curr}/completion.zsh.inc
+source $HOME/.asdf/installs/gcloud/${curr}/path.zsh.inc
+
 if [ "$(uname)" = "Darwin" ] ; then
 	# https://github.com/VSCodeVim/Vim#mac-setup
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
