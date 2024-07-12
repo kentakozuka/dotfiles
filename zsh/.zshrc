@@ -20,7 +20,7 @@ prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F
 
 # Custom functions
 function gctx() {
-	local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | fzf | awk '{ print $1 }')
+	local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | peco | awk '{ print $1 }')
 	print -z gcloud config configurations activate ${select}
 }
 # ^g: pick branch with inc search
