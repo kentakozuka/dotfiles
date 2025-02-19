@@ -94,6 +94,7 @@ if [ "$(uname)" = "Darwin" ] ; then
 	defaults write com.apple.dock mru-spaces -bool false && killall Dock
 	defaults write com.apple.dock autohide -bool true && killall Dock
 	defaults write NSGlobalDomain AppleICUForce24HourTime -bool true && killall Dock
+	defaults write NSGlobalDomain _HIHideMenuBar -bool false && killall Dock
 	# https://github.com/VSCodeVim/Vim#mac-setup
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 	defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
