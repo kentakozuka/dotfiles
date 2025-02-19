@@ -4,21 +4,6 @@
 ![linux](https://github.com/kentakozuka/dotfiles/actions/workflows/linux.yml/badge.svg)
 
 
-For vim, use [The Ultimate vimrc](https://github.com/amix/vimrc)
-
-# Mission Control
-
-![settings-mission-control](https://user-images.githubusercontent.com/16733673/174914077-2f6bff04-da07-4c3b-8605-d62a5c1b91f7.png)
-
-
-## Dock
-
-![dock](https://user-images.githubusercontent.com/16733673/174914114-cc2c2996-fbed-45bc-aff7-e9fda3169723.png)
-
-# Data & Time
-
-![settings-date-and-time](https://user-images.githubusercontent.com/16733673/174914142-66a11765-3076-4116-a8c1-4aca41f0e716.png)
-
 # Keyboard Input
 
 
