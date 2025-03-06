@@ -103,6 +103,7 @@ if [ "$(uname)" = "Darwin" ] ; then
 	defaults delete -g ApplePressAndHoldEnabled
 	# 1Password SSH Agent
 	export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+	. $HOME/.config/op/plugins.sh
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
