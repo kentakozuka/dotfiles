@@ -1,5 +1,5 @@
 # Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 # Plugins
 PLUGINS=$HOME/dotfiles/zsh/plugins
@@ -22,6 +22,10 @@ prompt='%F{green}$(whoami)%F{white} > %F{cyan}%2/ %F{yellow}$(git_branch_name)%F
 function gctx() {
 	local select=$(gcloud config configurations list --format='[no-heading]' | awk '{ print $1,$2,$3,$4 }' | column -t | peco | awk '{ print $1 }')
 	print -z gcloud config configurations activate ${select}
+}
+function actx() {
+	local select=$(aws configure list-profiles | peco | awk '{ print $1 }')
+	print -z export AWS_PROFILE=${select}
 }
 # ^g: pick branch with inc search
 function pick-git-branch {
@@ -108,4 +112,4 @@ if [ "$(uname)" = "Darwin" ] ; then
 fi
 
 # Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin . "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
