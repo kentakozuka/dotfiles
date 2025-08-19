@@ -1,0 +1,27 @@
+[user]
+	name = Kenta Kozuka
+	email = kenta.kozuka@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJvooqETRzpGmvL+yuZQSNK0vyehEgaXL+sm0kZmf1/
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[magithub]
+	online = false
+[magithub "status"]
+	includeStatusHeader = false
+	includePullRequestsSection = false
+	includeIssuesSection = false
+[safe]
+	directory = *
+[gpg]
+	format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = true
