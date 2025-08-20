@@ -2,10 +2,59 @@
 	name = Kenta Kozuka
 	email = kenta.kozuka@gmail.com
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJvooqETRzpGmvL+yuZQSNK0vyehEgaXL+sm0kZmf1/
+[core]
+    editor = nvim
+	  pager = delta
+    attributesfile = ~/.gitattributes
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	dark = true      # or light = true, or omit for auto-detection
+[merge]
+    conflictstyle = zdiff3
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+[push]
+  default = simple
+	autoSetupRemote = true
+[pull]
+  rebase = false
+[alias]
+  ba = branch -a
+  bd = "!bd() { \
+         git branch | awk '{ if ($1 != \"*\") print $1; }' | xargs git branch -D; \
+        }; bd"
+  bm = branch -m
+  ch = checkout
+	c = !gcop commit
+  ca = commit --amend
+  cl = clean
+  clf = clean -f
+  f = fetch --all
+  sw = switch
+  stu = stash -u
+  stp = stash pop
+  pu = push
+	pf = push --force
+  pl = pull
+  l = log --oneline --reverse
+  pr = "!pr() { \
+         git fetch origin pull/$1/head:$2; \
+       }; pr"
+	p = push
+	undo = reset --soft HEAD^
+	gcommit = !gcop commit
+	ac = !git add . && gcop commit
+	acp = !git add . && gcop commit && git push
+	cp = !gcop commit && git push
+	info = !gcop info
+	gconfig = !gcop config
+	ghelp = !gcop help
+	amend = commit --amend
+  set = branch --set-upstream-to
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
