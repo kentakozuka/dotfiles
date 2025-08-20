@@ -130,6 +130,8 @@ export PATH=$PATH:$HOME/.toolbox/bin
 
 export PATH="$PATH:$(go env GOBIN)"
 
+[[ -f "${HOME}/.local/share/chezmoi/private/.zshrc" ]] && builtin source "${HOME}/.local/share/chezmoi/private/.zshrc"
+
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 alias agentcore-jp="LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8 agentcore"
