@@ -18,36 +18,37 @@ function actx() {
 }
 # ^g: pick branch with inc search
 function pick-git-branch {
-    local picked=$(git branch | peco | tr -d ' ')
-    BUFFER="${BUFFER}${picked}"
-    CURSOR=$#BUFFER
-    zle redisplay
+	local picked=$(git branch | peco | tr -d ' ')
+	BUFFER="${BUFFER}${picked}"
+	CURSOR=$#BUFFER
+	zle redisplay
 }
 zle -N pick-git-branch
 bindkey '^g' pick-git-branch
 
 # ^i: pick branch with inc search
 function pick-isengard-account {
-    local picked=$(isengardcli ls --output emails | grep 'kentako' | peco | tr -d ' ')
-    BUFFER="${BUFFER}${picked}"
-    CURSOR=$#BUFFER
-    zle redisplay
+	local picked=$(isengardcli ls --output emails | grep 'kentako' | peco | tr -d ' ')
+	BUFFER="${BUFFER}${picked}"
+	CURSOR=$#BUFFER
+	zle redisplay
 }
 zle -N pick-isengard-account
 bindkey '^r' pick-isengard-account
 
 # ^w: open editor to edit executing command.
 edit_current_line() {
-    local tmpfile=$(mktemp)
-    echo "$BUFFER" > $tmpfile
-    $EDITOR $tmpfile -c "normal $" -c "set filetype=zsh"
-    BUFFER="$(cat $tmpfile)"
-    CURSOR=${#BUFFER}
-    rm $tmpfile
-    zle reset-prompt
+	local tmpfile=$(mktemp)
+	echo "$BUFFER" > $tmpfile
+	exec < /dev/tty
+	$EDITOR $tmpfile -c "normal $" -c "set filetype=zsh" < /dev/tty > /dev/tty
+	BUFFER="$(cat $tmpfile)"
+	CURSOR=${#BUFFER}
+	rm $tmpfile
+	zle reset-prompt
 }
 zle -N edit_current_line
-bindkey '^w' edit_current_line
+bindkey '^t' edit_current_line
 
 function hs() {
 	print -z `history -n 1 | tac | peco`
