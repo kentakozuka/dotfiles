@@ -50,7 +50,7 @@ edit_current_line() {
 zle -N edit_current_line
 bindkey '^t' edit_current_line
 
-function hs() {
+function hh() {
 	print -z `history -n 1 | tac | peco`
 	CURSOR=$#BUFFER
 }
