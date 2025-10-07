@@ -129,6 +129,7 @@ export PATH=$PATH:$HOME/.toolbox/bin
 [[ "$TERM_PROGRAM" == "vscode" ]] && builtin source "$(code --locate-shell-integration-path zsh)"
 
 export PATH="$PATH:$(go env GOBIN)"
+export PATH="$PATH:$(npm config get prefix)/bin"
 
 [[ -f "${HOME}/.local/share/chezmoi/private/.zshrc" ]] && builtin source "${HOME}/.local/share/chezmoi/private/.zshrc"
 
