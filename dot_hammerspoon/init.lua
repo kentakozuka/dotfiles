@@ -190,6 +190,15 @@ end
 eikana = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, eikanaEvent)
 eikana:start()
 
+-- Window switching with Command+`
+hs.hotkey.bind({"cmd"}, "`", function()
+  local app = hs.application.frontmostApplication()
+  local windows = app:allWindows()
+  if #windows > 1 then
+    windows[2]:focus()
+  end
+end)
+
 -- Reload config
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
