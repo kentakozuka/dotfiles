@@ -195,4 +195,16 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
   hs.reload()
 end)
 
+-- Configure macOS system preferences
+-- Disable most recently used spaces ordering
+hs.execute("defaults write com.apple.dock mru-spaces -bool false && killall Dock 2>/dev/null || true")
+-- Enable dock auto-hide
+hs.execute("defaults write com.apple.dock autohide -bool true && killall Dock 2>/dev/null || true")
+-- Force 24-hour time format
+hs.execute("defaults write NSGlobalDomain AppleICUForce24HourTime -bool true")
+-- Always show menu bar
+hs.execute("defaults write NSGlobalDomain _HIHideMenuBar -bool false")
+-- Show app switcher on all displays
+hs.execute("defaults write com.apple.Dock appswitcher-all-displays -bool true && killall Dock 2>/dev/null || true")
+
 hs.alert.show("Config loaded")
