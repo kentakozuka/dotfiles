@@ -229,7 +229,7 @@ local function getCurrentSpaceIndex(screen)
   return nil, nil
 end
 
-local function moveWindowToSpace(window, leftOrRight)
+local function moveWindowToSpace(window, idx)
   local mousePosition = hs.mouse.absolutePosition()
   local zoomButtonRect = window:zoomButtonRect()
   if not zoomButtonRect then return end
@@ -237,8 +237,7 @@ local function moveWindowToSpace(window, leftOrRight)
   local windowTarget = { x = zoomButtonRect.x + zoomButtonRect.w + 5, y = zoomButtonRect.y + (zoomButtonRect.h / 2) }
   hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, windowTarget):post()
   hs.timer.usleep(300000)
-  hs.alert.show(leftOrRight)
-  hs.eventtap.keyStroke({ "ctrl" }, "left", 0)
+  hs.eventtap.keyStroke({ "ctrl" }, tostring(idx), 0)
   hs.timer.usleep(300000)
   hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, windowTarget):post()
   hs.mouse.absolutePosition(mousePosition)
@@ -249,26 +248,21 @@ local function moveWindowOneSpace(direction)
   local window = hs.window.focusedWindow()
   if not window then return end
   local screen = window:screen()
-  local currentSpaceIndex, totalSpaces = getCurrentSpaceIndex(screen)
-  if not currentSpaceIndex or not totalSpaces then return end
+  local currentSpaceIdx, totalSpaces = getCurrentSpaceIndex(screen)
+  if not currentSpaceIdx or not totalSpaces then return end
 
   -- 現在のスペースと次のスペースを取得
-  local nextSpace = screen:next()
-  local prevSpace = screen:previous()
-  hs.alert.show(currentSpaceIndex .. "/" .. totalSpaces)
+  hs.alert.show(currentSpaceIdx .. "/" .. totalSpaces)
 
-  local targetSpace = nil
+  local targetSpaceIdx = nil
   if direction == "right" then
-    targetSpace = currentSpaceIndex + 1 <= totalSpaces and currentSpaceIndex + 1 or 1
+    targetSpaceIdx = currentSpaceIdx + 1 <= totalSpaces and currentSpaceIdx + 1 or 1
   elseif direction == "left" then
-    targetSpace = currentSpaceIndex - 1 >= 1 and currentSpaceIndex - 1 or totalSpaces
+    targetSpaceIdx = currentSpaceIdx - 1 >= 1 and currentSpaceIdx - 1 or totalSpaces
   end
 
-  hs.alert.show(targetSpace)
-  if targetSpace then
-    -- ウィンドウをターゲットスペースに移動
-    -- hs.spaces.moveWindowToSpace(window, targetSpace)
-    moveWindowToSpace(window, direction)
+  if targetSpaceIdx then
+    moveWindowToSpace(window, targetSpaceIdx)
   end
 end
 
