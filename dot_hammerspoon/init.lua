@@ -1,6 +1,16 @@
 -- Enable IPC for command line access
 hs.ipc.cliInstall()
 
+-- Disable most recently used spaces ordering
+hs.execute("defaults write com.apple.dock mru-spaces -bool false && killall Dock 2>/dev/null || true")
+-- Enable dock auto-hide
+hs.execute("defaults write com.apple.dock autohide -bool true && killall Dock 2>/dev/null || true")
+-- Force 24-hour time format
+hs.execute("defaults write NSGlobalDomain AppleICUForce24HourTime -bool true")
+-- Always show menu bar
+hs.execute("defaults write NSGlobalDomain _HIHideMenuBar -bool false")
+-- Show app switcher on all displays
+hs.execute("defaults write com.apple.Dock appswitcher-all-displays -bool true && killall Dock 2>/dev/null || true")
 -- Disable window animations
 hs.window.animationDuration = 0
 
@@ -199,17 +209,6 @@ hs.hotkey.bind({ "cmd" }, "`", function()
   end
 end)
 
--- Configure macOS system preferences
--- Disable most recently used spaces ordering
-hs.execute("defaults write com.apple.dock mru-spaces -bool false && killall Dock 2>/dev/null || true")
--- Enable dock auto-hide
-hs.execute("defaults write com.apple.dock autohide -bool true && killall Dock 2>/dev/null || true")
--- Force 24-hour time format
-hs.execute("defaults write NSGlobalDomain AppleICUForce24HourTime -bool true")
--- Always show menu bar
-hs.execute("defaults write NSGlobalDomain _HIHideMenuBar -bool false")
--- Show app switcher on all displays
-hs.execute("defaults write com.apple.Dock appswitcher-all-displays -bool true && killall Dock 2>/dev/null || true")
 
 local function getCurrentSpaceIndex(screen)
   if not screen then return nil, nil end
@@ -274,6 +273,22 @@ end)
 -- Control + Command + ← で左のスペースへ移動
 hs.hotkey.bind({ "ctrl", "cmd" }, "left", function()
   moveWindowOneSpace("left")
+end)
+
+-- Move window to next monitor
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Right", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:moveToScreen(win:screen():next())
+  end
+end)
+
+-- Move window to previous monitor
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "Left", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:moveToScreen(win:screen():previous())
+  end
 end)
 
 -- Reload config
