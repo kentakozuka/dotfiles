@@ -5,7 +5,7 @@ hs.ipc.cliInstall()
 hs.window.animationDuration = 0
 
 -- Left Half
-hs.hotkey.bind({"ctrl", "alt"}, "Left", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -18,7 +18,7 @@ hs.hotkey.bind({"ctrl", "alt"}, "Left", function()
 end)
 
 -- Right Half
-hs.hotkey.bind({"ctrl", "alt"}, "Right", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "Right", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -31,7 +31,7 @@ hs.hotkey.bind({"ctrl", "alt"}, "Right", function()
 end)
 
 -- Top Half
-hs.hotkey.bind({"ctrl", "alt"}, "Up", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "Up", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -44,7 +44,7 @@ hs.hotkey.bind({"ctrl", "alt"}, "Up", function()
 end)
 
 -- Bottom Half
-hs.hotkey.bind({"ctrl", "alt"}, "Down", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "Down", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -57,7 +57,7 @@ hs.hotkey.bind({"ctrl", "alt"}, "Down", function()
 end)
 
 -- Full
-hs.hotkey.bind({"ctrl", "alt"}, "Return", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "Return", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -70,7 +70,7 @@ hs.hotkey.bind({"ctrl", "alt"}, "Return", function()
 end)
 
 -- Top Left
-hs.hotkey.bind({"ctrl", "cmd"}, "Left", function()
+hs.hotkey.bind({ "ctrl", "cmd" }, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -83,7 +83,7 @@ hs.hotkey.bind({"ctrl", "cmd"}, "Left", function()
 end)
 
 -- Top Right
-hs.hotkey.bind({"ctrl", "cmd"}, "Right", function()
+hs.hotkey.bind({ "ctrl", "cmd" }, "Right", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -96,7 +96,7 @@ hs.hotkey.bind({"ctrl", "cmd"}, "Right", function()
 end)
 
 -- Bottom Left
-hs.hotkey.bind({"ctrl", "shift"}, "Left", function()
+hs.hotkey.bind({ "ctrl", "shift" }, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -109,7 +109,7 @@ hs.hotkey.bind({"ctrl", "shift"}, "Left", function()
 end)
 
 -- Bottom Right
-hs.hotkey.bind({"ctrl", "shift"}, "Right", function()
+hs.hotkey.bind({ "ctrl", "shift" }, "Right", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -122,7 +122,7 @@ hs.hotkey.bind({"ctrl", "shift"}, "Right", function()
 end)
 
 -- Center
-hs.hotkey.bind({"ctrl", "alt"}, "C", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "C", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -155,9 +155,9 @@ local function remapKey(modifiers, key, keyCode)
   hs.hotkey.bind(modifiers, key, keyCode, nil, keyCode)
 end
 
-remapKey({ 'ctrl' }, '[',  keyCodeSet({
-    keyCode('escape'),
-    keyCode(';', {'ctrl', 'shift'})
+remapKey({ 'ctrl' }, '[', keyCodeSet({
+  keyCode('escape'),
+  keyCode(';', { 'ctrl', 'shift' })
 }))
 
 -- Switc kana/alphanumeric.
@@ -187,21 +187,16 @@ local function eikanaEvent(event)
   end
 end
 
-eikana = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, eikanaEvent)
+eikana = hs.eventtap.new({ hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged }, eikanaEvent)
 eikana:start()
 
 -- Window switching with Command+`
-hs.hotkey.bind({"cmd"}, "`", function()
+hs.hotkey.bind({ "cmd" }, "`", function()
   local app = hs.application.frontmostApplication()
   local windows = app:allWindows()
   if #windows > 1 then
     windows[2]:focus()
   end
-end)
-
--- Reload config
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
-  hs.reload()
 end)
 
 -- Configure macOS system preferences
@@ -216,4 +211,79 @@ hs.execute("defaults write NSGlobalDomain _HIHideMenuBar -bool false")
 -- Show app switcher on all displays
 hs.execute("defaults write com.apple.Dock appswitcher-all-displays -bool true && killall Dock 2>/dev/null || true")
 
+local function getCurrentSpaceIndex(screen)
+  if not screen then return nil, nil end
+
+  local activeSpaceID = hs.spaces.activeSpaceOnScreen(screen)
+  if not activeSpaceID then return nil, nil end
+
+  local spacesForScreen = hs.spaces.spacesForScreen(screen)
+  if not spacesForScreen then return nil, nil end
+
+  for i, spaceID in ipairs(spacesForScreen) do
+    if spaceID == activeSpaceID then
+      return i, #spacesForScreen
+    end
+  end
+
+  return nil, nil
+end
+
+local function moveWindowToSpace(window, leftOrRight)
+  local mousePosition = hs.mouse.absolutePosition()
+  local zoomButtonRect = window:zoomButtonRect()
+  if not zoomButtonRect then return end
+
+  local windowTarget = { x = zoomButtonRect.x + zoomButtonRect.w + 5, y = zoomButtonRect.y + (zoomButtonRect.h / 2) }
+  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, windowTarget):post()
+  hs.timer.usleep(300000)
+  hs.alert.show(leftOrRight)
+  hs.eventtap.keyStroke({ "ctrl" }, "left", 0)
+  hs.timer.usleep(300000)
+  hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, windowTarget):post()
+  hs.mouse.absolutePosition(mousePosition)
+end
+
+-- ウィンドウを隣のスペースに移動する関数
+local function moveWindowOneSpace(direction)
+  local window = hs.window.focusedWindow()
+  if not window then return end
+  local screen = window:screen()
+  local currentSpaceIndex, totalSpaces = getCurrentSpaceIndex(screen)
+  if not currentSpaceIndex or not totalSpaces then return end
+
+  -- 現在のスペースと次のスペースを取得
+  local nextSpace = screen:next()
+  local prevSpace = screen:previous()
+  hs.alert.show(currentSpaceIndex .. "/" .. totalSpaces)
+
+  local targetSpace = nil
+  if direction == "right" then
+    targetSpace = currentSpaceIndex + 1 <= totalSpaces and currentSpaceIndex + 1 or 1
+  elseif direction == "left" then
+    targetSpace = currentSpaceIndex - 1 >= 1 and currentSpaceIndex - 1 or totalSpaces
+  end
+
+  hs.alert.show(targetSpace)
+  if targetSpace then
+    -- ウィンドウをターゲットスペースに移動
+    -- hs.spaces.moveWindowToSpace(window, targetSpace)
+    moveWindowToSpace(window, direction)
+  end
+end
+
+-- Control + Command + → で右のスペースへ移動
+hs.hotkey.bind({ "ctrl", "cmd" }, "right", function()
+  moveWindowOneSpace("right")
+end)
+
+-- Control + Command + ← で左のスペースへ移動
+hs.hotkey.bind({ "ctrl", "cmd" }, "left", function()
+  moveWindowOneSpace("left")
+end)
+
+-- Reload config
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "R", function()
+  hs.reload()
+end)
 hs.alert.show("Config loaded")
