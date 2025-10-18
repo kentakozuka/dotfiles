@@ -174,8 +174,10 @@ remapKey({ 'ctrl' }, '[', keyCodeSet({
 -- https://zenn.dev/obregonia1/articles/419ae303355f54
 -- Why simply hotkey.bind does not work?
 -- https://mac-ra.com/hammerspoon-command-eikana02/
-local simpleCmd = false
-local map = hs.keycodes.map
+local KEY_CODE_JIS_EISUU = 102
+local KEY_CODE_JIS_KANA  = 104
+local simpleCmd          = false
+local map                = hs.keycodes.map
 local function eikanaEvent(event)
   local c = event:getKeyCode()
   local f = event:getFlags()
@@ -187,15 +189,16 @@ local function eikanaEvent(event)
     if not f['cmd'] then
       if simpleCmd == false then
         if c == map['cmd'] then
-          hs.keycodes.setMethod('Alphanumeric (Google)')
+          hs.eventtap.keyStroke({}, KEY_CODE_JIS_EISUU, 0)
         elseif c == map['rightcmd'] then
-          hs.keycodes.setMethod('Hiragana (Google)')
+          hs.eventtap.keyStroke({}, KEY_CODE_JIS_KANA, 0)
         end
       end
       simpleCmd = false
     end
   end
 end
+hs.alert.show(hs.keycodes.currentMethod())
 
 eikana = hs.eventtap.new({ hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged }, eikanaEvent)
 eikana:start()
