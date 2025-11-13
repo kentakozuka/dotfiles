@@ -130,5 +130,7 @@ export PATH=$PATH:$HOME/.toolbox/bin
 export PATH="$PATH:$(go env GOBIN)"
 export PATH="$PATH:$(npm config get prefix)/bin"
 
+[[ -f "${HOME}/ghq/github.com/kentakozuka/dotfiles/zsh/private/.zshrc" ]] && builtin source "${HOME}/ghq/github.com/kentakozuka/dotfiles/zsh/private/.zshrc"
+
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
