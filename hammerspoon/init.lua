@@ -165,28 +165,6 @@ local function remapKey(modifiers, key, keyCode)
   hs.hotkey.bind(modifiers, key, keyCode, nil, keyCode)
 end
 
--- Emacs-like keybindings
-remapKey({ 'alt' }, 'f', keyCode('right', { 'alt' }))                    -- M-f: forward word
-remapKey({ 'alt' }, 'b', keyCode('left', { 'alt' }))                     -- M-b: backward word
-remapKey({ 'alt', 'shift' }, ',', keyCode('up', { 'cmd' }))              -- M-<: beginning of document
-remapKey({ 'alt', 'shift' }, '.', keyCode('down', { 'cmd' }))            -- M->: end of document
-remapKey({ 'alt' }, 'v', keyCode('pageup'))                              -- M-v: page up
-remapKey({ 'ctrl' }, 'v', keyCode('pagedown'))                           -- C-v: page down
-remapKey({ 'alt' }, 'd', keyCode('delete', { 'alt' }))                   -- M-d: delete word forward
-remapKey({ 'alt' }, 'delete', keyCode('delete', { 'alt', 'shift' }))    -- M-backspace: delete word backward
-remapKey({ 'ctrl' }, 'a', keyCode('left', { 'cmd' }))                    -- C-a: beginning of line
-remapKey({ 'ctrl' }, 'e', keyCode('right', { 'cmd' }))                   -- C-e: end of line
-remapKey({ 'ctrl' }, 't', keyCodeSet({ keyCode('x', { 'cmd' }), keyCode('v', { 'cmd' }) })) -- C-t: transpose
-remapKey({ 'ctrl' }, 'g', keyCode('escape'))                             -- C-g: cancel
-remapKey({ 'alt' }, 'w', keyCode('c', { 'cmd' }))                        -- M-w: copy
-remapKey({ 'ctrl' }, 'w', keyCode('x', { 'cmd' }))                       -- C-w: cut
-remapKey({ 'ctrl' }, 'y', keyCode('v', { 'cmd' }))                       -- C-y: paste
-
-remapKey({ 'ctrl' }, '[', keyCodeSet({
-  keyCode('escape'),
-  keyCode(';', { 'ctrl', 'shift' })
-}))
-
 -- Switc kana/alphanumeric.
 -- https://zenn.dev/obregonia1/articles/419ae303355f54
 -- Why simply hotkey.bind does not work?
