@@ -3,7 +3,7 @@
 
 # Plugins"
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
@@ -127,6 +127,8 @@ export PATH=$PATH:$HOME/.toolbox/bin
 # https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
 [[ "$TERM_PROGRAM" == "vscode" ]] && builtin source "$(code --locate-shell-integration-path zsh)"
 
+[[ -x "$(command -v snap)" ]] && PATH=/snap/bin:$PATH
+
 export PATH="$PATH:$(go env GOBIN)"
 export PATH="$PATH:$(npm config get prefix)/bin"
 
@@ -134,3 +136,9 @@ export PATH="$PATH:$(npm config get prefix)/bin"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+. "$HOME/.local/bin/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
