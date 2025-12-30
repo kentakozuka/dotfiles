@@ -1,6 +1,5 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Plugins"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
@@ -25,16 +24,6 @@ function pick-git-branch {
 }
 zle -N pick-git-branch
 bindkey '^g' pick-git-branch
-
-# ^i: pick branch with inc search
-function pick-isengard-account {
-	local picked=$(isengardcli ls --output emails | grep 'kentako' | peco | tr -d ' ')
-	BUFFER="${BUFFER}${picked}"
-	CURSOR=$#BUFFER
-	zle redisplay
-}
-zle -N pick-isengard-account
-bindkey '^r' pick-isengard-account
 
 # ^w: open editor to edit executing command.
 edit_current_line() {
@@ -134,11 +123,11 @@ export PATH="$PATH:$(npm config get prefix)/bin"
 
 [[ -f "${HOME}/ghq/github.com/kentakozuka/dotfiles/zsh/private/.zshrc" ]] && builtin source "${HOME}/ghq/github.com/kentakozuka/dotfiles/zsh/private/.zshrc"
 
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
-. "$HOME/.local/bin/env"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+. "python/env"
+. "./env"
