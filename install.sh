@@ -11,7 +11,7 @@ ln -sf ${SCRIPTPATH}/git/.gitignore ${HOME}/.gitignore
 ln -sf ${SCRIPTPATH}/zsh/.zshrc ${HOME}/.zshrc
 ln -sf ${SCRIPTPATH}/asdf/.asdfrc ${HOME}/.asdfrc
 ln -sf ${SCRIPTPATH}/vim/.vimrc ${HOME}/.vimrc
-ln -sf ${SCRIPTPATH}/vim/init.lua ${HOME}/.config/nvim/init.lua
+ln -sf ${SCRIPTPATH}/nvim ${HOME}/.config/nvim
 mkdir -p ${HOME}/.ssh && ln -sf ${SCRIPTPATH}/ssh/config ${HOME}/.ssh/config
 mkdir -p ${HOME}/.hammerspoon && ln -sf ${SCRIPTPATH}/hammerspoon/init.lua ${HOME}/.hammerspoon/init.lua
 
