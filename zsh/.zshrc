@@ -1,9 +1,12 @@
 # Kiro CLI pre block. Keep at the top of this file.
+# Prevent double loading
+[[ -n "$_ZSHRC_LOADED" ]] && return
+export _ZSHRC_LOADED=1
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Plugins"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
+plugins=(git zsh-autosuggestions fast-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Custom functions
@@ -129,5 +132,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-. "python/env"
-. "./env"
